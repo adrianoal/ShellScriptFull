@@ -1,0 +1,271 @@
+---------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------				
+			-- Programação Shell Script - Automatizando Rotinas no Linux --
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+Prof: Ricardo Prudenciato
+
+-----------------------
+- Seção 1: Introdução -
+-----------------------
+
+1.o que é Shell Script
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+2.Como será o Curso
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+3.Antes de começarmos
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+4.Arquivos e Scripts Usados Durante o Curso
+
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+
+
+Administrador de sistemas e analista de suporte.
+
+Para quem deseja trabalhar com Linux e Unix
+
+Unix  --> S.O
+Linux --> S.O (Linux é baseado no Unix.)
+ 
+ 
+Shell --> É a interface entre o usuário e o sistema operacional (kernel)
+
+Kernel --> O kernel é considerado o principal item dos sistemas operacionais, 
+		   sendo que ele é a ligação entre o processamento de dados e os programas.
+		   
+
+Verificar se o vi está instalado: (Vi editor de testo do linux)
+sudo dpkg -l |grep vim 
+
+
+Se não tiver o vi Instalado, instale com o comando abaixo:
+sudo apt-get install vim
+
+Usuario: adriano
+Senha: Adri@no310710
+
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+Prof: Ricardo Prudenciato
+
+-----------------------
+- Seção 2:  -
+-----------------------
+
+5.O Shell
+
+  É a interface entre o usuário e o sistema OP. Unix/Linux
+  
+  USUÁRIO
+	SHELL --> Uma das ferramentas para acessar o Kernel é o Shell.
+		KERNELL --> Administrador do Hardware
+			HARDWARE --> Baixo nível, CPU, memório, HD e etc.
+
+
+
+ TIPOS DE SHELL:
+ ---------------
+ 
+ Bourne Shell (sh): Shell original e padrão do Unix
+ 
+ Bourne-Again Shell (bash): Shell padrão no Linux compatível com sh mas com melhorias.
+							Tbm incorpora recursos so csh e Ksh.
+
+ Korn Shell (Ksh): Tbm uma melhoria do bourne shell 
+
+ C Shell (csh): Traz para o shel recursos da linguagem C.
+
+ 
+ 
+ Qual o shell estou usando --> echo $0
+ Outra forma de verificar --> tail /etc/passwd
+ 
+ Verificar se outros shel estao instalado na minha maquina: --> sudo -l |grep ksh
+ 
+ Se eu quisesse instalar --> sudo apt-get install ksh
+ 
+ Entrar no Shell ksh --> ksh
+ Verificando novamente -->  echo $0
+ Para sair do shel ksh --> exit
+ 
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+6.Principais Comandos Linux - Parte 1
+
+ nome do comando --help --> mostra as opções q o comando oferece ex:
+ touch --help 
+ man touch --> Mostra o manual mais completo
+ 
+ 
+ cd arquivos --> Entrar em um diretorio 
+ cd .. --> volta para o diretorio anterior
+ 
+ cd../../ --> Volta para a raiz
+ 
+ cd - --> volta p/ o arquivo anteiror
+ 
+ cd  --> cd espaco vai para o home
+ 
+ pwd --> mostra o diretorio atual
+ 
+  
+ cd ~usuario --> vai p/ o home do usuario q eu quiser
+ 
+ ls --> listar
+ 
+ ls -ltr --> ordena do mais velho para o mais novo
+ 
+ ls -l --> mostra os detalhes dos diretorios
+ 
+ 
+ ps --> mostra meus processos do meu usuario apenas na minha sessao
+ 
+ ps axu --> Mostra varias informaçoes: Nome do usuario dono do processo. 
+			id do processo. Consumo de CPU/Memoria. 
+			Quanto tempo esta em execucao e o nome do processo.
+ 
+ touch --> P/ criar um arquivo em branco, ou atualizar um arquivo q ja existe			
+		   Para criar --> touch arquivo-teste
+		   
+ touch --help --> Para ver as opcoes dos comandos			
+
+
+ echo --> Para mostrar na tela algum parametro q vc deu ex:
+ echo Adriano estudando shell script
+ echo -n Adriano estudando shell script --> -n não vai quebrar a linha
+ echo -e "Curso shell\n script" -- Coloca uma quebra de linha 
+ 
+ echo -e --> Aceita caracteres especiais ex:
+  echo -e "Curso shell\script\novo desafio" 
+ 
+ mkdir --> criar um diretorio ex:
+ mkdir diretorio1
+ 
+ Criar um diretorio dentro de um determinado diretorio:
+ mkdir diretorio1/exercicio1
+ 
+ rm xxxxx --> Comando para remover/apagar um arquivo
+ 
+ rm -r xxxxx --> Comando para remover/apagar um diretorio
+ 
+ rmdir xxxx --> Só funciona se o diretorio estiver vazio
+ 
+ sleep --> Comando q conta um tempo. Ex:
+ sleep 10 --> conta 10segundos e volta a linha de comando
+ 
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+7.Principais Comandos Linux - Parte 2
+
+ Comandos de manipulação de arquivos:
+ 
+ cat arquivos.txt
+ cat -b alunos2.txt --> Numera as linhas q nao estão em branco
+ cat -n alunos2.txt --> Numera todas as linhas, até as q estão em branco
+ cat -A alunos2.txt --> Mostra caracteres especiais 
+						(Ajuda a identificar os caracteres q nao aparecem)
+
+ cat --help --> Mostra todas a opções possíveis
+
+ tac alunos2.txt --> Lê o arquivo em ordem decrescente
+ 
+ tail arquivilongo.txt --> Mostra as ultimas dez linhas
+ tail -n5 arquivilongo.txt --> Determino quantas linhas quero exibir.
+ tail -5 arquivilongo.txt --> Outra forma de fazer a mesma coisa
+ 
+ 
+ 
+ head arquivilongo.txt --> Mostra as primeiras dez linhas do arquivo
+ head -5 arquivilongo.txt --> Determino quantas linhas quero exibir.
+ 
+ head -c10 arquivilongo.txt --> Determino a qtde de caracteres q quero exibir
+ 
+ 
+ 
+ wc --> Conta caracteres,linhas, palavras e bytes de um arquivo.
+ wc alunos.txt --> A saída mostrou qtde de linhas	
+								   qtde de caracteres	
+								   qtde de Bytes
+
+ wc -l alunos.txt --> Mostrará só o número de linhas								   
+ wc -m alunos.txt --> Mostrará só o número de caracteres
+ wc -c alunos.txt --> Mostrará só o número de bytes
+ 
+ wc alunos* --> Faz a contagem para todos os arquivos
+ 
+ tail -n5 alunos2.txt |wc -w --> Está pegando a saído do arquivo alunos2.txt e 
+											usando como parametro de entrada.
+											
+ 											
+ sort --> Para ordenar um arquivo
+ 
+ sort alunos.txt --> Exibe de forma ordenada
+ sort -r alunos.txt --> Ordena de forma reversa(z-a)
+ sort -k2 alunos.txt --> ordena a partir do segundo campo
+ sort -k3 alunos.txt --> ordena a partir do terceiro campo
+ 
+ uniq alunos.txt --> Toda vez q um nome estiver repitido na sequencia, mostrará apenas um.
+  
+  Uma forma de resolver isso, é ordenar primeiro e depos exibir com o uniq. Exemplo:  
+ sort alunos.txt |uniq
+ 
+ --Primeiro ordeno depois exibe, exemplos abaixo:
+ 
+ sort uniq -u alunos.txt --> Mostra apena os q apareceram uma vez
+ sort uniq -d alunos.txt --> Mostra apena os q apareceram duplicados
+ sort uniq -c alunos.txt --> Conta as repetições
+ 
+ sort alunos.txt |uniq -c |sort --> Conta os q repitiram mais vez e ordena do maior p/ menor
+ 
+ sort alunos.txt |uniq -c |sort -r |head -n1 --> Só a linha que tem mais repetição
+ 
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+8.Principais Comandos Linux - Parte 3
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
