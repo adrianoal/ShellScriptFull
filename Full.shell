@@ -372,11 +372,74 @@ Prof: Ricardo Prudenciato
 ---------------------------------------------------------------------------------------------------	
 10.Principais Comandos Linux - Parte 5
  
+ find --> Serve para procurar por diretorios,arquivos
  
+ find /home  
+ find /  
+ find ./     --> Do meu diretorio pra frente
  
- 
+ find ./ -name alunos.txt --> Procura arquivos 
+ find ./ -name alunos.txt* --> Procura arquivos 
+ find ./ -name *copia*
+ find ./ -user adr -name alunos2.txt
  										
+ find ./ -name alunos* -exec ls -l {} \. --> (no lugar do {} sera colocado as saidas do comando)
+ 
+ date --> (Mostra a data e hora do sistema. Sem parametros)
+ date --help --> (Mostra todas as possibilidade)
+ 
+ date +%H 	 --> (Se eu quiser mostrar só a hora?)
+ date +%M 	 --> (M maiusculo para minuto)
+ date +%m 	 --> (m minusculo para mês)
+ date +%D 	 --> (D Mostra a data no seguinte formato: 06/23/20)
+ date +%d 	 --> (m minusculo só o dia)
+ date +%d/%m --> (para dia e mes)
+ 
+ 
+ seq Comando para gerar uma sequencia:
+ -------------------------------------
+ 
+ seq 10   	--> (Faz uma seq de 1 a 10)
+ seq 0 12 	--> (vai do 0 ao 12)
+ seq 5 a2 	--> (vai do 5 ao 12)
+ seq 5 2 30 --> (vai do 5 ao 30 com intervalos de dois em dois)
+   // Muito usado em instruções de loop, for, while
+   
+ 
+ expr --> Comando utilizado para fazer contas:
+ ---------------------------------------------
+ 
+ expr --help --> (Para ver todas as operações possíveis)
+ 
+ expr 5 + 2 --> (7 a sintaxe precisa de espaço)
+ 
+ expr 5 / 2 --> (2 n mostra as casas decimais)
+ 
+ expr 5 /* 2 --> (10 neste caso te q usar a barra para proteger, pq no shell * 
+					é um caracter especial)
 
+ 					
+ 
+ expr 5 /* 2 - 2 --> (8) 
+ 
+ echo 3 + 2 | bc --> (bc interpleta uma string como conta)
+ 
+ echo "(3 + 2)*5" | bc --> (25)
+ 
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+11.Execução Sequencial de Comandos  do Shell
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  								
 								
  								
