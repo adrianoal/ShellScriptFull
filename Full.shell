@@ -170,7 +170,7 @@ Prof: Ricardo Prudenciato
 
  Comandos de manipulação de arquivos:
  
- cat arquivos.txt
+ cat arquivos.txt --> Lista 
  cat -b alunos2.txt --> Numera as linhas q nao estão em branco
  cat -n alunos2.txt --> Numera todas as linhas, até as q estão em branco
  cat -A alunos2.txt --> Mostra caracteres especiais 
@@ -235,6 +235,76 @@ Prof: Ricardo Prudenciato
 ---------------------------------------------------------------------------------------------------	
 8.Principais Comandos Linux - Parte 3
 
+ 
+ tr --> Muda traduz e deleta caracteres(Pode ser uma linha ou um arquivo):
+ 
+ cat alunos.txt |tr a e --> (Trocou toda letra a por e)
+ 
+ cat alunos.txt |tr a-z A-Z --> (Trocou caixa baixa por caixa alta)
+ 
+ cat alunos.txt |tr aei AEI --> (Toda letra aei foi trocada por AEI)
+ 
+ cat alunos2.txt |tr ' ' '\t' --> (Trocando o espaço por tab)
+ 
+ cat alunos2.txt |tr ' ' '\t' | cat -A --> (Consigo ver melhor os tab do arquivo acima)
+ 
+ cat alunos2.txt |tr -d aei --> (Toda vez q aparecer as letras aei será deletado)
+ 
+ echo "Curso Shell Script" |tr l L --> (Toda vez q encontrar um l trocará por L)
+ 
+ echo "Curso Shellllllll Script" |tr -s 'l' --> (Vai comprimir o l) Exemplo: Shell p/ Shel
+ 
+ tr --help --> (Mostra varias forma de usar esse comando)
+ 
+ echo Curso Shell Script |tr [:lower:] [:upper:] --> (Transformar tudo de minusculo p/maiusculo)
+ 
+
+ cut --> Comando para cortar uma string
+
+ cat alunos2.txt |cut -c1-5  --> (Cortará do caracter 1-5 de cada linha)
+ 
+ cat alunos2.txt |cut -c1,2,3--> (Quero cortar do caracter um, dois e cinco)
+ 
+ cat alunos2.txt | cut -c5- --> (Quero cortar a partir do caracter 5 p/ frente)
+ 
+ cat alunos2.txt | cut -c-5 --> (Cortar até o caracter 5)
+ 
+ cat alunos2.txt | cut -f1 --> (f1 eu mostro apenas o campo 1)
+ 
+ cat alunos2.txt |cut -d " " -f2- --> (Mostrar do campo 1 ao 3 separando com espaço) // d sig. delimitador
+ 
+ tail /etc/passwd | -d":" -f1,5 --> (mostrar o campo 1 e o 5 separados por :)
+ 
+ 
+ diff --> Usado para separar dois arquivos. (Sign. Diferença)
+ 
+ diff alunos2.txt alunos3.txt --> (Exibe apenas a diferença entre os arquivos)
+ diff alunos2.txt alunos3.txt | cat -A --> (A mesma coisa, porém, mostrou q tem um espaço)
+ 
+ diff -w alunos2.txt alunos3.txt --> (Compara os dois arquivos, porém, 
+										desconsidera os espaços em branco)
+										
+ Usando o comando "diff" para comparar diretórios:
+ -------------------------------------------------
+ 
+ diff -r arquivos arquivos-copia --> (Compara os dois arquivos)
+ 
+
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
