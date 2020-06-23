@@ -289,13 +289,97 @@ Prof: Ricardo Prudenciato
  
  diff -r arquivos arquivos-copia --> (Compara os dois arquivos)
  
-
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+9.Principais Comandos Linux - Parte 4
+ 
+ 
+ Comando "grep" Serve para procurar o conteúdo dentro de uma string:
+ -------------------------------------------------------------------
+ 
+ grep Claudia alunos2.txt --> (Retornar toda vez q aparecer o nome Claudia)
+ 
+ grep Claudia alunos* --> (Procura em todos os arquivos alunos q contenham a palavra Claudia)
+ 
+ grep "Ricardo prudenciato" alunos*
+ 
+ 
+ Quais as opções do comando "grep"?
+ ----------------------------------
+ 
+ grep -i RICARDO alunos*  --> (Tira a opção do case sensitive, ou seja independente de ser 
+								caixa alta ou baixa) (-i deixa o comando mais pesado)
+								
+ grep -c Ana alunos2.txt --> (Vai contar quantas vezes encontrou a palavra Ana)								
+ grep -c Ana alunos.txt* 
+ 
+ grep -v Ana alunos.txt* --> (Faz ao contrario, não vai mostrar a linha q contenha essa 
+								palavra)
+ 
+ grep -r Ana* --> (Procurar todos os arquivos desse diretório com a palavra ana) 
+ grep -rl Ana* --> (Só mostra os arquivos q contenham essa palavra, mas não lista) 
+ 
+ cat alunos2.txt |grep Rafael 
+ 
+ grep -A3 Carlos alunos2.txt --> (A sig. After, ou seja, 3 linhas depois da ocorrencia da palavra Carlos)
+  //Muito usado para analisar log
   
+  grep -B3 Carlos alunos2.txt --> (A sig. Before, ou seja, 3 linhas antes da ocorrencia da palavra Carlos)
+  //Muito usado para analisar log
+  
+  
+  Tem três opções: 
+  grep  --> Para procurar o conteúdo dentro de uma string (Aceita expressão regular simples)
+  fgrep --> Para procurar o conteúdo dentro de uma string (Não aceita expressões regulares)
+  egrep --> Para procurar o conteúdo dentro de uma string (Aceita expressão regular estendidas)
+    
+ 
+ Comando "sed" faz um filtro e substituição de conteúdo:
+ -------------------------------------------------------
+ 
+ sed --help --> Para mostrar as posibilidades de comando
+ 
+ sed '1,3 d' alunos2.txt --> (Para deletar da linha 1 a linha3) 
+ sed  /Rafael/d alunos2.txt  --> (Procurando Rafael e deletando a linha inteira 
+									toda vez q encontrar)
+									
+ cat alunos2.txt |sed 's/Paulo/Joao/'--> (P/ substituir o Paulo pelo Joao)									
+ 
+ 
+ echo "Curso Linux Shell Script Linux" |sed 's/Linux/Unix'
+									--> (Substituindo a primeira ocorrencia Linux por Unix)
+										 Exemp: Curso Unix Shell Script Linux 								 
+
+ echo "Curso Linux Shell Script Linux" |sed 's/Linux/Unix/g' 
+										--> (Para substituir todas as ocorrencias tem q usar g)
+										 Exemp: Curso Unix Shell Script Unix 
+										 
+    
+ echo "Curso Linux Shell Script Linux" |sed 's/ //g' 
+										--> (Toda vez q encontrar um espaço troco por nada)										 
+										Exemp: CursoLinuxShellScriptLinux
+
+ 
+ Comando "More"	exibe paginando, mostra o q tem na primeira página e vai descendo:									
+ ---------------------------------------------------------------------------------
+ 
+ more arquivolongo.txt
+ 
+ less arquivolongo.txt --> (A mesma coisa do more, porém, tras mais possibilidades)
+ 
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+10.Principais Comandos Linux - Parte 5
  
  
  
  
- 
+ 										
+
+ 								
+								
+ 								
  
  
  
