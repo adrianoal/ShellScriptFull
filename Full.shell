@@ -693,7 +693,89 @@ interpretar os caracteres especiais.
 ---------------------------------------------------------------------------------------------------	
 15.O editor VI
 
+ Alguns editores de texo:
+ 
+ gedit
+ nano
+ vi 
+ 
+ vi arquivolongo.txt --> (Entrar no arquivo atraves do editor)
+  i --> (Dentro do arquivo com o i p/ inserir)
+        (Para sair do modo de inserção aperte o esc)
+        (: alguma coisa para entrar no modo de comando)		
+		
+ 		
+ :1  --> vou p/ a primeira linha do comando
+ :$  --> vou p/ a ultima linha do arquivo
+ :20 --> Vou p/ alinha 20 
+ 
+ :! --> Permite eu digitar um comando no bash
+			(Sai do vi digita o comando no bash e volta, ao apertar Enter, ele volta para o vi)
+			
+ Opções de buscas no editor vi:
+ ------------------------------
 
+ /Linux -> (vai procurar de baixo para cima a palavra Linux) 
+			Ao apertar n de next vai para o próximo Linux
+			Se eu quiser voltar essa busca de baixo para cima --> N
+			:$ --> Vai para a ultima linha do arquivo
+			?Linux --> Procura de baixo para cima
+
+ Como recortar, copiar e colar no vi:
+ ------------------------------------
+
+ dd --> Pode ser usado p/ remover e recortar
+        vai em cima da linha e digita dd (Ele recorta uma linha) 
+		vai em cima da linha e digita d4d (Ele remove 4 linhas)
+		vai em cima da linha e digita d6d (Ele remove 6 linhas)
+		vai em cima da linha e digita d10d (Ele remove 10 linhas)
+		
+	Colar:
+	Depois de recortado, deve escolher a linha e digitar p (A linha será colada)
+	
+	Outra opção de copiar e colar:
+	------------------------------
+	yy --> Copia a linha
+	p --> Cola a linha
+	
+	
+ Como salvar um arquivo no editor vi e sair dele:
+ ------------------------------------------------
+ 
+ :w  --> Salva o arquivo
+ 
+ :wq --> Salvar e sair
+ :x  --> Tbm salva e sai
+ 
+ :q  --> Sair sem salvar
+ :q! --> tbm sai sem salvar
+ 
+ 
+ Tabela de referência:
+		https://www.smashingmagazine.com/2010/05/vi-editor-linux-terminal-cheat-sheet-pdf/
+		
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+16.File Globbing
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+	
+	
+  			
+ 			
+ 
+ 
+ 
+ 
+  
+
+  
  
  
  
