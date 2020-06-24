@@ -649,7 +649,55 @@ essas variáveis não estarão mais disponíveis, são apenas locais desse bash.
  Em resumo essas foram as variáveis de ambiente utilizadas dentro do Shell, muito utilizadas em
 Script. 
 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+14.O uso das Aspas no Shell
+ 
+ O Shell tem uma serie de caracteres especiais. 
+ 
+ $  	--> P/ referenciar um avariável
+ ' `´ ' --> P/ fazer uma execução de subcomandos
+ 
+ Esse caracteres no momento da execução são interpretados, a primeira coisa q o Shell faz é 
+interpretar os caracteres especiais.
 
+ Tem situações que não desejamos que o Shell traduza esses caracteres.
+
+ Usamos as aspas para proteger, fazer com q o Shell ignore esses caracteres.
+ 
+ Exemplos:
+ 
+ echo * --> (Isso sign. pegar todos os arquivos do diretório atual)
+ echo "*" --> (Neste caso ele não interpreta o *)Isso sign. proteger o caracter com as aspas duplas
+ echo '*' --> (tbm é possível proteger com aspas simples)
+ echo \* --> (\ tbm protege o caracter seguinte)
+ 
+ ls aluno*   --> (Listar toda palavra ou string que comece com a palavra aluno)
+ ls "aluno*" --> (Quando eu faço isso, estou protegendo e o Shell não vai encontrar)
+ 
+ Formar de proteger o caracter:
+ ls "aluno*"
+ ls 'aluno*'
+ ls aluno\*
+ 
+ As aspas duplas protegem todos os caracteres exceto --> $ ´ /
+ As aspas simples protegem tudo
+ 
+ Exemplo:
+ 
+ echo "$TESTE" --> (O shell continua interpretando)
+ echo '$TESTE' --> (Neste caso, não funciona, pq o Shell protege)
+ echo \$TESTE  --> (tbm não funciona, o Shell protege)
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+15.O editor VI
+
+
+ 
+ 
+ 
+ 
  
  
 								
