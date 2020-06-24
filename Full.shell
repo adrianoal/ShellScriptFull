@@ -170,7 +170,11 @@ Prof: Ricardo Prudenciato
 
  Comandos de manipulação de arquivos:
  
- cat arquivos.txt --> Lista 
+  O comando cat do Linux é um dos mais úteis para se aprender. 
+  Seu nome é uma derivação da palavra concatenate (concatenar) e permite que você crie, 
+  e exiba arquivos no formato padrão de tela ou em outro arquivo, entre outras coisas.
+ 
+ cat arquivos.txt --> P/ exibir o conteudo de arquivo
  cat -b alunos2.txt --> Numera as linhas q nao estão em branco
  cat -n alunos2.txt --> Numera todas as linhas, até as q estão em branco
  cat -A alunos2.txt --> Mostra caracteres especiais 
@@ -429,7 +433,7 @@ Prof: Ricardo Prudenciato
  
 ---------------------------------------------------------------------------------------------------	
 ---------------------------------------------------------------------------------------------------	
-11.Execução Sequencial de Comandos  do Shell
+11.Execução Sequencial de Comandos do Shell
 
  cat alunos.txt |wc -l --> (listou o arquivo/ contou numero de linhas)
  
@@ -461,17 +465,85 @@ Prof: Ricardo Prudenciato
 ---------------------------------------------------------------------------------------------------	
 12.Redirecionamento de Entrada e Saída
 
+ Todo comando recebe um entrada e gera uma saída padrão e uma saída de erro
+ 
+ Entrada 	   --> STDIN  (0)
+ Saída Padrão  --> STDOUT (1)
+ Saída de Erro --> STDERR (2)
+ 
+ As saídas tanto STDOUT e STDERR são exibidas na tela, porém, essas saídas podem ser 
+ redirecionadas p/ outro arquivo, uma impressora e etc.
+ 
+ cat alunos3.txt --> (Exibicao do conteudo do arquivo na tela) 
+ 
+ 
+ Redirecionamento de arquivos:
+ 
+ > Criar 
+ >> Existente
+ 
+ Exemplos de redirecionamento de saídas:
+ ---------------------------------------
 
-											 
-											 
+ cat alunos3.txt > alunos-temp.txt --> (> Criando um novo arquivo)
+ cat alunos3.txt >> alunos-temp.txt	-->	(>> Redirecionando p/ um novo arquivo)									 
+ 
+ cat alunos3.txt > alunos-temp.txt
+ cat alunos-temp.txt
+ 
+ date > alunos-temp.txt --> (Pegou a saída e sobrescreveu o arquivo, ou seja, apagou o q tinha)
+ 
+ date >> alunos-temp.txt --> (Vai concatenando as saídas, e mantendo o conteudo do arquivo anterior)
+ 
+ ls -l alunos.txt
+ 
+ ls -l alunos.txt5 > log.out --> (esse arquivo nao existe, portanto deve ser direcionado para a 
+									saida de erro STDERR (2).) Exemplo:
+ 									
+ 
+ ls -l alunos.txt5 2> log.out --> (Quando o arquivo n existe precisa ser jogado para log de erro:
+									STDERR (2), conforme este exemplo)
+ 
+  
+ ls -l alunos.txt5 2>> log.out --> (2>> p/ Jogar no log de erro: STDERR (2) e concatenar as saídas)
  
  
+ Usando os dois comando em uma uncia instrução:
+
+ ls -l alunos.txt5 > log.out 2> log-erro.out --> (Se der certo, joga no 1º, se der errado joga no 2º)
+
+ ls -l alunos.txt5 >> log.out 2>&1 --> (Saída padrão vai ser a mesma q a saida de erro) 
+ 
+ cat log.out
+ cat log-erro.out
+ 
+ As saídas dever ser jogadas para um arquivo de log, ou para lugar nenhum --> Ex. /dev/null
+ /dev/null --> Serve p/ omitir uma saída de erro, q eu não quero q apareça.
+ 
+ Um outro exemplo de redirecionamento:
+
+cat alunos.txt |grep adr
+
  
  
+ Exemplos de redirecionamento de entradas:
+ -----------------------------------------
  
+ cat alunos.txt |tr a A 
+     Obs: O comando 'tr' tem q receber uma entrada
+	 
+ Uma outra forma de fazer a mesma coisa:
  
- 
+ tr 'a' 'A' < alunos.txt --> (Estou redirecionando a saida do arquivo com parametro de entrada 
+								p/ o comando tr)
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+13.Variáveis no Shell
+
  								
+ 
+ 
 								
  								
  
