@@ -541,7 +541,115 @@ cat alunos.txt |grep adr
 ---------------------------------------------------------------------------------------------------	
 13.Variáveis no Shell
 
- 								
+ O Shell trabalha com variáveis de ambientes, variáveis setadas nele.
+ Essas variáveis são carregadas no momento do login, ao iniciar a sessão e fica disponível para o 
+usuário e para o sistema em geral.
+ 
+ Essas variável são possíveis verificar por dois comandos: 
+ 
+ env --> Vê a variável q foi exportada
+ set --> Vê as variáveis locai e as exportadas
+ 
+ env |less --> ()
+ set |less --> ()
+
+ Como referenciar essa variáveis?
+ --------------------------------
+ 
+ Sempre referenciar uma variável com o sinal de $ na frente. Exemplo:
+ 
+ echo $HOME --> (P/ ver o conteúdo da variável HOME)
+ 
+ 
+ Declarando variável no Shell:
+ -----------------------------
+ 
+ Variáveis no Shell, pode começar com letras maiuscula ou minuscula e_
+ 
+ Exemplo:
+ 
+ Variavel1=Adriano
+ echo variavel1
+ 
+ 
+ Curso="Curso de Shell Script"
+ echo $Curso
+ 
+ 
+ echo $$ --> (Mostra o PID da sessão atual)
+				//process identifier (PID) ou ID do processo
+				
+ ps axu |grep bash --> (Mostra os processos q estão em execução)				
+ 
+ 
+ Quando a variável é declara, ela fica local. Não é acessível a outros Bash, quando acessar de novo 
+essas variáveis não estarão mais disponíveis, são apenas locais desse bash.
+ Como exportar a variável?
+ 
+ Declarando variável e atribuindo valor:
+ ---------------------------------------
+ 
+ TESTE=Curso
+ echo $TESTE
+ 
+ echo $$
+  // meu PID 10643
+  
+  
+  Para abrir um bash em cima do atual é só digitar o comando abaixo:
+  
+  bash
+  echo $$ --> (Mostra o PID da sessão)
+  // meu PID da nova sessão 10811
+  exit --> (P/ Sair da sessão atual e voltar p/ a anterior)
+  
+  
+  Exportando a variável para os processos filhos desse Bash
+  
+  export TESTE --> (Será exposta p/ outros processos filhos desse bash)
+  
+  
+  
+  Como colocar o resultado de um comando dentro de uma variável?
+  --------------------------------------------------------------
+  
+  date +%H --> (Hora atual do sistema)
+  
+  Para guardar esse valor dentro de uma variável?
+  -----------------------------------------------
+  
+ HORA=`date +%H´ `--> ( Não é aspas, isto é uma crase. 
+						Usado p/ guardar um resultado dentro da variável)
+						
+ Uma outra forma é (). Exemplo:
+
+ MINUTO=$(date +%M) --> (Guardando o resultdo na variável)
+ echo $MINUTO
+ 
+ exibindo as duas variáveis:
+ 
+ 
+ echo $HORA:$MINUTO
+ 
+  
+ env --> Vê a variável q foi exportada
+ set --> Vê as variáveis locai e as exportadas
+ 
+ 
+ Exemplo:
+ 
+ env |grep HORA
+ set |grep HORA
+ 
+ 
+ export VAR1=Valor --> (Declarando e exportando ao mesmo tempo)
+ env |grep VAR1 --> (Ele reconhece essa variável)
+ 
+ 
+ Em resumo essas foram as variáveis de ambiente utilizadas dentro do Shell, muito utilizadas em
+Script. 
+
+
  
  
 								
