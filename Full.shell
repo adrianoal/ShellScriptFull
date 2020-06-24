@@ -422,7 +422,7 @@ Prof: Ricardo Prudenciato
  
  expr 5 /* 2 - 2 --> (8) 
  
- echo 3 + 2 | bc --> (bc interpleta uma string como conta)
+ echo 3 + 2 | bc --> (bc interpleta uma string como numerico)
  
  echo "(3 + 2)*5" | bc --> (25)
  
@@ -431,8 +431,39 @@ Prof: Ricardo Prudenciato
 ---------------------------------------------------------------------------------------------------	
 11.Execução Sequencial de Comandos  do Shell
 
-
+ cat alunos.txt |wc -l --> (listou o arquivo/ contou numero de linhas)
  
+ date; echo Linux; ls --> (Um exemplo de sequencia de comandos)
+ 
+ ls alunos.txt && echo Linux --> (&& Sign. q se o 1º comando falhar ele nem executa o 2º.)
+									Caso não queira app essa regra, deve utilizar --> ;
+
+ 									
+ ls alunos.txt || echo Linux --> (|| Sign. q se o 1º comando for executado com sucesso eu não executo o 2º.
+											 se o 1º der erro, eu executo o 2º)
+											 
+ ls -l --> (Total de arquivos e o usuario, local e etc.)										 
+ 
+ cd .. --> (P/ ver o diretorio anterior)
+ ls    --> (P/ listar o diretorio)
+ 
+ 
+ Como voltar p/ o arquivo anterior e listar em um unico comando?
+ 
+ cd ..; ls -l --> (Conforme o exemplo acima, em um unico comando, 
+					voltou p/ o diretorio anterior e listou os conteudo do arquivo)
+					
+ ( cd ..; ls -l ) --> Colocar entre () sign q implicitamente sera aberto um novo Shell, 
+						e já volta p/ o Shell atual					
+						
+ 						
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+12.Redirecionamento de Entrada e Saída
+
+
+											 
+											 
  
  
  
