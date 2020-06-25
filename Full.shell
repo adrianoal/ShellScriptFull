@@ -158,6 +158,8 @@ Prof: Ricardo Prudenciato
  
  rm -r xxxxx --> Comando para remover/apagar um diretorio
  
+ rm Aula* --> (Apaga tudo q começa com Aula) Cuidado!
+ 
  rmdir xxxx --> Só funciona se o diretorio estiver vazio
  
  sleep --> Comando q conta um tempo. Ex:
@@ -757,6 +759,80 @@ interpretar os caracteres especiais.
 ---------------------------------------------------------------------------------------------------	
 ---------------------------------------------------------------------------------------------------	
 16.File Globbing
+
+ Este assunto trata-se de expressão regular:
+ 
+ Vai ser um resumo, expressão regular é um assunto muito intenso, tem livre sobre este assunto 
+ e curso que tratam só de expressão regular.
+ 
+ Deferênça entre File Globbing e Regex
+ 
+ Regex (Regular expression) --> P/ seleção de texto, seleciona um padrão de texto.
+ 
+ File Globbing --> (É uma forma q o Shell tem de selecionar arquivos de diretórios aqui na 
+					interface)
+ 
+ 
+ Exemplos no File Globbing:
+ --------------------------
+ 
+ ls Aula* --(Qualquer arquivo q comece com Aula)
+ 
+ ls -la Aula[12345] --> (Aqui eu informo quais os caracteres q me interessam, isso é uma lista)
+ ls -la Aula[1-5]   --> (Outra forma de fazer a mesma coisa(O [] é usado para fazer uma lista)
+ ls -la Aul[Aa][1-5] --> (Pode ser A ou A, vai encontrar)
+ ls -la * [12] 		--> (Pega qualquer coisa q termine com 1 ou 2)
+ ls -la *11 --> (Vai mostrar o seguinte: Aula11 e AULA11) Ou seja caixa alta e caixa baixa
+ ls -la {Aula,AULA}11 --> (Vai trazer a mesma coisa desde d q termine com 11)
+ 
+ 
+ Obs: [] os colchetes faz a lista
+	  {} os chaves eu escolho as strings q me interessam
+	  
+ 
+ ls -la Aula1? --> (? Estou exigendo q tenha um caracter após o 1)
+ 
+ Exemplos:
+ 
+ Aula10
+ Aula11
+ Aula12
+ Aula13... Ou seja qulaquer caracter após o 1 --> (Note q não mostra Aula1)
+ 
+ 
+  ls -la Aula? --> (? Estou exigendo q tenha apenas u1 caracter)
+ 
+ Exemplos:
+ 
+ Aula1
+ Aula2
+ Aula3
+ Aula4
+ Aula5...
+ 
+ 
+ ls -la Aula?? --> (?? Estou exigendo q tenha 2 caracter)
+ 
+ Exemplos:
+ 
+ Aula11
+ Aula12
+ Aula13
+ Aula14
+ Aula15...
+ 
+ Os princopais caracteres que se usa no File Globbing:
+ 
+ *  --> Qualquer coisa ou nada
+ ?  --> Quer dizer um caracter específico
+ [] --> Uma lista de caracteres possíveis
+ {} --> Para as strings que me interessam
+ 
+ Continuação na próxima aula...
+ 					
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+17.Básico de Expressões Regulares
 
  
  
