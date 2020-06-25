@@ -172,7 +172,7 @@ Prof: Ricardo Prudenciato
 
  Comandos de manipulação de arquivos:
  
-  O comando cat do Linux é um dos mais úteis para se aprender. 
+  O comando e do Linux é um dos mais úteis para se aprender. 
   Seu nome é uma derivação da palavra concatenate (concatenar) e permite que você crie, 
   e exiba arquivos no formato padrão de tela ou em outro arquivo, entre outras coisas.
  
@@ -947,7 +947,125 @@ interpretar os caracteres especiais.
 ---------------------------------------------------------------------------------------------------	
 Questionário 1: Teste da Seção de Revisão:
 
-							
+ Pergunta 1:
+ Qual a saída do comando abaixo:
+ 
+	 echo 'Use a variável $SHELL para verificar o SHELL em uso'
+	 
+ Resposta 1:	
+ -----------
+		Use a variável $SHELL para verificar o SHELL em uso
+ 
+ ----------------------------------------------------------------------------------------------- 
+ 
+ 
+ Pergunta 2:
+ -----------
+ 
+ Respota 2: Apenas o usuário e o grupo possuem a permissão "w" e podem então alterar o arquivo.
+		  Demais usuários do sistema podem apenas ler o arquivo.
+		  
+ -----------------------------------------------------------------------------------------------		  
+ 
+ 
+ Pergunta 3:
+ ----------- 
+ Qual opção do comando cat mostra os caracteres especiais de um texto como por exemplo 
+ indicadores de tabulação, final de linha e etc?
+ 
+ Respota 3: cat -A 
+
+ -----------------------------------------------------------------------------------------------
+ 
+ Pergunta 4:
+ -----------
+ Você digita ls *e[0-9].doc em um diretório.
+ Qual dos seguintes nomes de arquivo, se existente, será exibido no resultado?
+
+ Respota 4: telefone2.doc
+ 
+ 
+ ----------------------------------------------------------------------------------------------
+ 
+ Pergunta 5:
+ -----------
+ Qual opção deve ser utilizado no comando "echo" para que não haja uma quebra de linha no final
+ de sua execução?
+
+ Respota 5: 
+			echo -n 
+ 
+ Para q haja uma quebra: 
+			echo -e
+			
+ ----------------------------------------------------------------------------------------------
+  
+ Pergunta 6:
+ -----------
+ Qual comando deve ser utilizado para que apenas a primeira linha do arquivo notas.txt seja 
+ exibida?
+ 
+ Resposta 6: 
+			head -n1 
+			ou
+			head -1
+			
+			
+ ----------------------------------------------------------------------------------------------			
+ 
+ Pergunta 7:
+ -----------
+ Qual o resultado do comando abaixo?
+ # wc -l alunos*|sort -rg|grep -v|head -n1
+ 
+ Resposta 7:
+			Desntre os arquivos q começam com "alunos" no nome, exibe apenas o que possui mais		
+			linhas, acompanhado do total de linhas do arquivo.
+			
+ ----------------------------------------------------------------------------------------------
+
+ Pergunta 8:
+ ----------- 
+ Qual comando redireciona tanto a saída padrão quanto a saída de erro para o arquivo log.out?
+ 
+ Resposta 8:
+			comando > log.out2>&1
+			
+ ----------------------------------------------------------------------------------------------
+ 
+ Pergunta 9:
+ -----------
+  Qual das afirmações abaixo é a mais correta para o comando:
+  grep -E "^[0-9][A-Z]" aruivo.out
+  
+  Resposta 9:
+			Serão retornadas todas as linhas q contenham no começo da linha um número seguido por
+			uma letra maiúscula.
+
+ ----------------------------------------------------------------------------------------------
+ 
+ Pergunta 10:
+ -----------
+ Qual comando deve ser utilizado no vi para q seja possível sair sem salvar as alterações 
+ realizadas?
+ 
+ Resposta 10:
+ ------------
+			:q!
+ 
+  
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+Seção 3: Criando e Executando um Shell Script
+
+18.Primeiro Script -Nomes, Permissões e Execução 
+
+
+ 
+ 
+ 
+ 
+ 
  
  
  									
