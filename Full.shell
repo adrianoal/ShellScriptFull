@@ -834,6 +834,136 @@ interpretar os caracteres especiais.
 ---------------------------------------------------------------------------------------------------	
 17.Básico de Expressões Regulares
 
+ # --> Comentário
+ 
+ grep  --> global regular expression printing (impressão global de expressões regulares)
+ egrep --> Extended regular expression (Expressão regular estendida)
+  
+ grep  --> Serve para procurar o conteúdo dentro de uma string:
+ egrep --> Aceita mais expressões regulares
+ 
+ Exemplos:
+ --------
+ 
+ egrep Linux texto.txt --> (Ou seja, onde encontrar a palavra Linux dentro do arquivo vai mostrar,
+							porém, mostra a linha inteira)
+							
+ Comando para consultar os alias:
+ -------------------------------- 
+ 
+ alias							
+ egrep --color --> (Mostra colorido o conteudo do arquivo selecionado) 
+ 
+ egrep "[Ll]inux" text.txt --> (Estou dizendo q quero a primeira letra maiuscula ou minuscula)
+ 
+ 
+ egrep "b[aei]g" texto.txt --> (Alguma coisa que comece com "b" e uma lista "aei" fechando com "g")
+ egrep "b[a-o]g" texto.txt --> (Faz a mesma coisa) A lista pode ser usada com letras ou com numeros
+ 
+ egrep "^Linux" texto.txt --> (Quero q me retorne 1 linha com uma palavra específica q esteja no 
+								começo dessa linha)
+								Para isso se usa ^ no começo. 
+								Toda linha que tenha uma palavra que comece com Linux será exibidas
+ 
+ egrep "^#" texto.txt --> (Tudo q começar com #) 
+ egrep -v "^#" texto.txt --> (-v faz o contrario, não me mostra essa string)
+								Ou seja, mostrará tudo, menos os comentários
+								
+ egrep "Linux$" --> (Sempre q encontra a palvra Linux no final da linha, va me mostrar)								
+						Para isso serve o $
+						
+						
+ egrep "^$" texto.txt --> (Para mostrar as linhas em branco)
+ egrep -v "^$" texto.txt --> (Para não mostrar nenhuma linha em branco)
+ 
+ 
+ * na expressão regular é diferente do File Globbing:
+ ----------------------------------------------------
+ 
+ * --> Indica q o caracter anterior pode aparecer nenhuma vez, ou varias vezes.
+ 
+ Exemplo:
+ --------
+ 
+ egrep "b[a-i]g*" texto.txt --> (bag
+								 beg
+								 big
+								 beginner
+								 bigger
+								 bege)
+								 
+ 								 
+								
+  								
+ egrep "b[a-i]g+" texto.txt --> (+ Sig. q o caracter anterior tem q aparecer pelo menos 1 
+									ou mais vezes)
+									
+ 									
+ 
+ 
+ egrep "b[a-i]g?" texto.txt --> (? Sig q o caracter anterior pode aparecer nenhuma 
+									ou apenas uma vez)
+									
+ egrep "O.Linux" texto.txt --> (. Sig. Qualquer coisa depois do ponto mais o Linux, pode ser um		
+									espaço em branco, pq tbm é um caracter)									
+ 
+ egrep "O Linux" texto.txt --> (No caso de espaço, pode usar essa sintaxe)
+ 
+ egrep "O..Linux" texto.txt --> (Se eu quiser duas coisas deposi di Linux)
+ 
+ egrep "O.*Linux" texto.txt --> (O.*Linux: Sig. Que entre a palavra O e Linux, pode existir qualquer coisa)
+ 
+ 
+ Outra coisa interessante de ver é a proteção do ponto: Exemplo \.
+ -----------------------------------------------------------------
+ 
+ egrep "[Ll]inux." texto.txt --> (Pega a palavra Linux ou linux q tenha um ponto após essa palavra,
+									porem, pega tbm espaços depois dessa palavra Linux ou linux)
+									
+ Quando eu quero protegar isso, ou seja, apenas o caracter ponto mesmo. 
+ 
+ Exemplo: 									
+ 
+ egrep "[Ll]inux\." texto.txt --> (Neste caso vai pegar a palavra Linux ou linux e q tenha . 
+									apenas após a palavra)
+									Em outras palavras estou dizendo p/ o Shell não interpretar 
+									isso como parte da expressão regular.
+
+ Obs: O uso da barra invertida é importante para proteger dentro da expressão regular.
+
+ ^ --> Começar 
+ 
+ Exemplo:
+ --------
+ 
+ sed '/^#/d' texto.txt --> (Sempre q começar com # deletar)
+ 
+ sed 's[Ll]inux/Unix/g' texto.txt --> (Toda vez q encontrar Linux ou linux, substituir por Unix)
+										g  sig. global
+ 
+  
+							
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+Questionário 1: Teste da Seção de Revisão:
+
+							
+ 
+ 
+ 									
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 								
+		
+
+ 
+ 
+ 
  
  
  
