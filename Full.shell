@@ -1060,22 +1060,71 @@ Seção 3: Criando e Executando um Shell Script
 
 18.Primeiro Script -Nomes, Permissões e Execução 
 
+ Criando o primeiro script no Shell Bash.
+ 
+ Criar 
+ Executar
+ 
+ É importante usar um padrão para criar um nome. Exemplo: 
+ 
+ vi primeiro_script.sh
+ vi PrimeiroScript.sh
+ vi PRIMEIRO_SCRIPT.sh
+	Obs: sh é opcional, porém, é padrão.
+	
+ 	
+ Observar o padão da empresa que estou trabalhando na hora de criar meus script.
 
  
+ Ao criar o script, a 1º coisa é informar qual vai ser o interpretador, por padão vamos usar o 
+ bash.
+ 
+ #!/bin/bash  --> Estou dizendo q a linguagem abaixo está utilizando a linhuagem do bash
+ 
+ Posso colocar o interpretador q eu quiser. Exemplo:
+ 
+ #!bin/ksh
+ #!bin/csh
  
  
- 
- 
- 
- 
+ clear
+ echo "========== Meu Primeiro Script =========="
+ echo "" 										--> Deixar um espaço em branco
+ echo -n "Exibir data e hora atual: "			--> -n p/ não quebrar linha
+ date
+ echo "========================================="
+ sort ../arquivos/alunos2.txt                    --> P/ exibir
  									
  
+ ls -l --> Exibe os detalhes dos diretórios
  
-
+ 1º Primeira coisa, verificar as permissões do meu Script
+ 
+ -rwxr-xr-x 1 adr adr 911 set 1 2017 PrimeiroScript.sh
+ 
+ -rwxr --> Permissões do usuário  (r pode ler/ w pode escrever) no arquivo
+ -xr   --> Permissões do grupo    (o grupo pode apenas ler (r))
+ -X    --> Permissões dos outros  (Podem somente ler os arquivos)  
+ 
+ Todas as permissões são associadas a um usuário e a um grupo:
+ 
+ adr --> Usuário
+ adr --> Grupo
+ 
+ 1º coisa a se fazer é dar permissão de execução nesse arquivo.
+ 
+ chmod +x --> Dá permissão de execução para usuário/grupo/outros (-rwxr-xr-x)
+ chmod u+x --> Permissão de execução apenas p/ o usuário 
+ chmod 777 PrimeiroScript.sh
+							--> Permissão de leiura escrita e execução p/ todos os usuários do sistema 
+								(Não é recomendado usar essa opção)
+								
+ chmod 744 PrimeiroScript.sh -->  Só eu tenho permissão de execução, os outros apenas leitura.								
  
  
+ A forma mais comum de executar o Script:
  
- 
+ ./ PrimeiroScript.sh
  								
 		
 
