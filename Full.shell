@@ -1224,7 +1224,19 @@ Seção 3: Criando e Executando um Shell Script
 ---------------------------------------------------------------------------------------------------	 
 20.Comentários - Boas Práticas
 
-
+ Cirar comentário é essencial para o uso futuro desse script, pra entender o que faz, como faz, 
+ e como funciona cada função dele.
+ 
+  Algumas maneiras de criar comentários no ShellScript:
+  
+  1º Coisa é criar um cabeçalho (É onde se informa pra que serve o script, qual a função, quem criou
+								 quando foi criado, quais alterações foram feitas no decorrer do tempo)
+								 
+ 								 
+  
+ 
+  
+ 
 
  
  
