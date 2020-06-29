@@ -1183,7 +1183,52 @@ Seção 3: Criando e Executando um Shell Script
 ---------------------------------------------------------------------------------------------------	
 19.Definições de PATH
 
+ $PATH --> É uma variável de ambiente 
+		   Essa variável é setada quando eu logo no sistema.
+ 
 
+ echo $PATH --> Para verificar qual é o meu PATH atual
+ 
+ Eu posso guardar meu diretório em uma variável de ambiente.
+ Exemplo:
+ 
+ PATH="$PATH:/home/adr/Cursos/ShellScript/Scripts"
+ 
+ echo $PATH --> Vai mostrar tudo q eu tinha antes, mas o que eu adicionei
+ 
+ 
+ 
+ Obs: Quando eu guardo meu arquivo em uma variável de ambiente, posso executar de qualquer lugar.
+ Exemplo:
+ 
+ É só digitar o nome do arquivo que ele executa:
+ 
+ SegundoScript.sh 
+ 
+ Não foi necessário encontrar o diretório e executar o camando: ./SegundoScript.sh
+ 
+ Quando eu faço dessa forma, fica apenas na minha variável local, se eu reiniciar ou se eu fechar
+ meu terminal não vai estar.
+ 
+ Como eu faço para deixar isso definitivo?
+ 
+ Editando o ~/.profile --> Exemplo:
+ 
+ vi ~/.profile
+ 
+ No dia a dia, isso ajuda bastante, colocar os scripts no PATH.
+ 
+ Esse foi o objetivo dessa aula.
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 
+20.Comentários - Boas Práticas
+
+
+
+ 
+ 
+ 
  
  
  
