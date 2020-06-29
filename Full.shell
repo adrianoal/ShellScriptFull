@@ -1079,22 +1079,36 @@ Seção 3: Criando e Executando um Shell Script
  Ao criar o script, a 1º coisa é informar qual vai ser o interpretador, por padão vamos usar o 
  bash.
  
+ # Isso chama-se: shebang refere-se aos dois caracteres "#!", quando os mesmos são os primeiros 
+	caracteres de um arquivo de texto, especificamente em um código fonte escrito em uma linguagem 
+	interpretada.
+	
  #!/bin/bash  --> Estou dizendo q a linguagem abaixo está utilizando a linhuagem do bash
  
  Posso colocar o interpretador q eu quiser. Exemplo:
  
+ #!bin/sh
+ #!bin/bash
  #!bin/ksh
  #!bin/csh
+ #!bin/python
  
  
+ #!/bin/bash
  clear
  echo "========== Meu Primeiro Script =========="
- echo "" 										--> Deixar um espaço em branco
+ echo "" 										--> Deixar uma linha com espaço em branco
  echo -n "Exibir data e hora atual: "			--> -n p/ não quebrar linha
  date
  echo "========================================="
  sort ../arquivos/alunos2.txt                    --> P/ exibir
- 									
+
+ Cursos/CursoShellScript/arquivos/alunos2.txt
+ 
+ esc :!ls -l ../arquivos 							 -->  Para consultar o nome do arquivo q quero exibir 									
+ 
+ esc :wq  
+ 
  
  ls -l --> Exibe os detalhes dos diretórios
  
@@ -1121,14 +1135,66 @@ Seção 3: Criando e Executando um Shell Script
 								
  chmod 744 PrimeiroScript.sh -->  Só eu tenho permissão de execução, os outros apenas leitura.								
  
+ chmod +x PrimeiroScript.sh  --> Todos os usuário do sistema tem permissão de execução aqui.
+ 
+
+ Existem várias formas de executar os script's:  
+ ----------------------------------------------
  
  A forma mais comum de executar o Script:
  
- ./ PrimeiroScript.sh
- 								
-		
+ ./SegundoScript.sh -->  ./ é a mesma coisa de digitar o caminho inteiro do arquivo 
+ 
+ Exemplo:
+ 
+ /home/adr/Cursos/ShellScript/Scripts/SegundoScript.sh
+ 
+ 
+ Obs: Quando eu executo um script, implicitamente abre um novo shell executa esse script em um 
+      processo filho e depois retorna para o Shell atual.
+
+ Tem uma forma de executar que ele executa no próprio Shell atual
+ 
+ Exemplo:
+
+ source SegundoScript.sh --> Executou no próprio bash
+  Obs: O source pode ser substituído por .
+     Exemplo:
+	 
+ . SegundoScript.sh
+ 
+ Resumindo, as três formas de executar script no shell:
+ 
+ 
+ ./SegundoScript.sh   		--> Abre um novo bash
+ source SegundoScript.sh	--> No próprio bash
+ . SegundoScript.sh			--> No próprio bash
+ 
+ 
+ Outros exemplos é executar chamando o interpretador:
+ ----------------------------------------------------
+ 
+ sh SegunsoScript.sh
+ bash SegunsoScript.sh 		
+ ksh SegunsoScript.sh
+ csh SegunsoScript.sh
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	
+19.Definições de PATH
+
 
  
+ 
+ 
+ 
+ 
+ 
+ 						
+
+
+
+
  
  
  
