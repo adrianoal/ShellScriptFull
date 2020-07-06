@@ -790,7 +790,7 @@ interpretar os caracteres especiais.
 	  {} os chaves eu escolho as strings q me interessam
 	  
  
- ls -la Aula1? --> (? Estou exigendo q tenha um caracter após o 1)
+ ls -la Aula1? --> (? Estou exigindo q tenha um caracter após o 1)
  
  Exemplos:
  
@@ -821,7 +821,7 @@ interpretar os caracteres especiais.
  Aula14
  Aula15...
  
- Os princopais caracteres que se usa no File Globbing:
+ Os principais caracteres que se usa no File Globbing:
  
  *  --> Qualquer coisa ou nada
  ?  --> Quer dizer um caracter específico
@@ -1232,8 +1232,11 @@ Seção 3: Criando e Executando um Shell Script
   1º Coisa é criar um cabeçalho (É onde se informa pra que serve o script, qual a função, quem criou
 								 quando foi criado, quais alterações foram feitas no decorrer do tempo)
 								 
- 								 
-  
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+21.Trabalhando com variáveis no Shell Script.
+
+ 
  
   
  
