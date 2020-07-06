@@ -213,7 +213,8 @@ Prof: Ricardo Prudenciato
  tail -n5 alunos2.txt |wc -w --> Está pegando a saído do arquivo alunos2.txt e 
 											usando como parametro de entrada.
 											
- 											
+ 								
+ sort ../arquivos/alunos2.txt --> Exibe o arquivo nesse diretorio 								
  sort --> Para ordenar um arquivo
  
  sort alunos.txt --> Exibe de forma ordenada
@@ -1236,8 +1237,46 @@ Seção 3: Criando e Executando um Shell Script
 ---------------------------------------------------------------------------------------------------	 								 
 21.Trabalhando com variáveis no Shell Script.
 
+ Para que usar variáveis nos códigos?
  
+  * Para facilitar a leitura do código, torná-lo mais legível
+  * Usar para campos e valores que possam ser alterados no decorrer do tempo
+  * Usar variável é importate, porque, quando um arquivo precisa ser alterado, é só mudar o 
+  caminho da variável, facilita na manutenção do código.
+  
+  Exemplo abaixo:
+    
+  No Shell, variáveis são em letras maiuscula:
+  
+  Exemplo:
+  
+  DATAHORA=$(date +%H:%M) --> Sintaxe de execução de um subcomando no Shell
+						  --> Esse comando mostrara a data + hora e minuto
+
+ Criar uma variável para armazenar o nome do arquivo: ../arquivos/alunos2.txt
+
+ ARQALUNOS="/home/adr/Cursos/ShellScript/arquivos/alunos2.txt"
  
+ Para fazer a leitura
+ 
+ sort $ARQALUNOS
+ 
+ Se eu quiser no meio o código, eu posso atribuir um novo valor para a variável DATAHORA.
+
+ Exemplo:
+ --------
+
+ DATAHORA=$(date +%H) 
+ 
+  Neste caso essa variável vai armazenar apenas a Hora
+  
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+22.Exit Codes
+
+  
+ 
+
   
  
 
