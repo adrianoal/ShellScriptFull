@@ -1274,8 +1274,87 @@ Seção 3: Criando e Executando um Shell Script
 ---------------------------------------------------------------------------------------------------	 								 
 22.Exit Codes
 
-  
+ Todo Shell Script tem um código de saída  que vai de 0 a 255.
+ É um código que vai dizer se o programa foi executado com sucesso, ou se deu algum tipo de erro.
  
+ 0 	   --> Sucesso
+ 1-255 --> Ou seja, qualquer coisa diferente de 0 está relacionado a um tipo de erro.
+ 
+ Como saber qual código um Script está retornando?
+  Através da variável $?
+  
+  $? --> Vai retornar o código de retorno do comando anterior
+ 
+ Exemplo:
+ 
+ touch teste --> Criou o arquivo em branco
+ echo $? --> Retornou 0 portanto, sem erro.
+ 
+  ls /tmp --> Listando arquivos temporários
+  echo $? --> Retornou 0 portanto, sem erro.
+  
+  
+  tmp e /var/temp:
+  ----------------
+ 
+ Os diretórios /tmp e /var/tmp do sistema Linux servem para armazenar os arquivos temporários, 
+ porém o uso de cada uma das pastas é ligeiramente diferente. 
+ O que distingue fundamentalmente os dois diretórios é o tempo em que os arquivos permanecem no 
+ local.
+ 
+ A pasta /tmp em geral integra a memória RAM. 
+ Ou seja, é mais rápida e apresenta menor tempo de vida útil. 
+ Assim, arquivos nesse diretório tendem a ser removidos a cada nova inicialização do software 
+ original ou do sistema.
+ 
+ A pasta /var/tmp normalmente está associada a um disco físico e, portanto, possui um tempo de 
+ vida útil maior. 
+ O sistema também elimina os arquivos da pasta em algum momento, mas isso ocorre com menor 
+ frequência. 
+ Assim, os dados nesse diretório possuem maior chance de ser recuperados.
+ 
+ Como usar isso dentro do Script?
+ Como definir o exit code que eu quero dentro do Script?
+ 
+ Exemplo:
+ --------
+ 
+#/bin/bash
+ 
+ls /tmp
+ls outroarquivo
+
+exit  --> Neste caso, quando não informo o código de erro, ele sai do script e mantem 
+		  o código de retorno do código anterior.
+
+echo "Script Executado"		  
+
+ Se eu quiser exebir o meu próprio código de retorno:
+ 
+  exit 10 --> Aqui estou definindo meu código de erro, conforme exemplo abaixo:
+ 
+
+#/bin/bash
+ 
+ls /tmp
+ls outroarquivo
+
+exit  10    
+	  
+echo "Script Executado"		   
+
+ 
+ Outro exemplo:
+  
+#/bin/bash
+ 
+ls /tmp
+
+ls outroarquivo
+
+RETURN_CODE=$?
+	  
+echo "O Codigo de retorno do ls foi $RETURN_CODE"		
 
   
  
