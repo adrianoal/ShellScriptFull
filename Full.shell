@@ -1416,7 +1416,49 @@ echo $SENHA
  echo " O nome completo do aluno é : $ALUNOCOMPLETO"
  echo ""
  echo "FIm do Script"
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+24.Recebendo Entradas do Usuário Através de Parâmatros
+
+ Nessa aula vamos ver outra forma de receber entrada do usuário através de parâmetros.
  
+ $0 --> Nome do Programação
+ $# --> Quantidade de Parâmetros
+ $* --> Todos os Parâmatros Inseridos
+ 1-9 --> Cada um dos Parâmatros
+ 
+ Exemplo: 
+ 
+ #!/bin/bash
+
+# $0 - Nome do Programa
+# $# - Quantidade de Parâmetros
+# $* - Todos os parâmetros inseridos
+# $1-9 - Cada um dos parâmetros
+
+# Scrpt --> ExemploParametros.sh
+
+ Exemplo de execucao com parametros:
+ 
+ ./ExemploParametros.sh Curso Shell Script Linux Bash
+
+echo "O script $0 recebeu $# parâmetros"
+
+echo "Os parâmetros recebidos foram: $*"
+
+echo ""
+echo "Parâmetro \$1 = $1"
+echo "Parâmetro \$2 = $2"
+echo "Parâmetro \$3 = $3"
+echo "Parâmetro \$4 = $4"
+
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+25.Criando Script - Lista de Exercícios
+
+
  
  
  
