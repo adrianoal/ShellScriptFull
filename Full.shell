@@ -1139,7 +1139,7 @@ Seção 3: Criando e Executando um Shell Script
  chmod +x PrimeiroScript.sh  --> Todos os usuário do sistema tem permissão de execução aqui.
  
 
- Existem várias formas de executar os script's:  
+ Existem várias formas de executar os scripts:  
  ----------------------------------------------
  
  A forma mais comum de executar o Script:
@@ -1360,9 +1360,64 @@ echo "O Codigo de retorno do ls foi $RETURN_CODE"
 ---------------------------------------------------------------------------------------------------	 								 
 23.Recebendo Entradas do Usuário Através do Comando read
 
+ Vamos aprender como efetuar uma entrada de dados no Shell Script.
  
+ Para isso vamos utilizar o comando read 
  
+ Exemplo:
+ 
+ read NOME 
+ echo $NOME 
+ 
+ read VAR1 VAR2 VAR3 
+ Curso Shell Script
+ echo $VAR1
+ echo $VAR2
+ echo $VAR3
+ 
+----------------------
+ read VAR1 VAR2
+ Curso Shell Script
+ echo $VAR1 --> Curso, vai focar associado nesta variavel
+ echo $VAR2 --> Shell Script, vai ficar associado na nesta variavel 
+ 
+ read --help --> Mostrará varia opções de como trabalhar com este comando.
+ 
+ Outra forma:
+ -----------
+ read -p "Informe o seu curso: " VAR5
+  Informe o seu curso: .NET
+  echo $VAR5 
+  .NET 
+  
+ read -s --> O que está sendo digitado será omitido.
 
+Exemplo:
+
+read -s SENHA
+123456         <-- Quando esta sendo digitado, nao parecerá na tela, será omitido. 
+echo $SENHA
+
+ read --help --> Em caso de dúvidas
+ 
+ 
+ Como utilizar esses recursos no Script?
+ 
+ ARQALUNOS="home/adr/cursos/shellScript/arquivos/alunos2.txt"
+ 
+ clear 
+ echo "===== Script de busca de Alunos ====="
+ echo ""
+ read -p "Por favor, informe o nome do aluno: " ALUNO
+ 
+ ALUNOCOMPLETO=$(grep "$ALUNO" $ARQALUNOS)
+ 
+ echo ""
+ echo " O nome completo do aluno é : $ALUNOCOMPLETO"
+ echo ""
+ echo "FIm do Script"
+ 
+ 
  
  
  
