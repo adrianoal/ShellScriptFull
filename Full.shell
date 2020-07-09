@@ -1459,12 +1459,197 @@ echo "Parâmetro \$4 = $4"
 25.Criando Script - Lista de Exercícios
 
 
+Apenas Download do PDF
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+26.Criando Scripts - Resolução dos Exercícios 1 e 2
+
+ 1. Crie um Script que após executado solicite dois valores como entrada. 
+	Esses valores devem ser somados e o resultado exibido para o usuário.
+ 
+ Resolução:
+ 
+ #!/bin/bash
+
+#########################################################################
+# Exercício 1 - Criando e Executando Scripts				#
+#									#
+# Nome: SomaValores.sh							#
+#									#
+# Autor: Ricardo Prudenciato (ricardo@linuxsemfronteiras.com.br)	#
+# Data: DD/MM/AAAA							#
+#									#
+# Descrição: O script faz a soma de dois valores inseridos 		#
+#	     pelo usuário						#
+#									#
+# Uso: ./SomaValores.sh							#
+#									#
+#########################################################################
+
+read -p "Informe o Valor 1: " VALOR1
+read -p "Informe o Valor 2: " VALOR2
+
+echo --> Para dar um espaço em branco
+echo "A soma de $VALOR1 + $VALOR2 é $(expr $VALOR1 + $VALOR2)"
+
+
+
+
+ 2. Crie um script que gere um relatório de algumas informações da máquina atual:
+ • Nome da Máquina
+ • Data e Hora Atual
+ • Desde quando a máquina está ativa
+ • Versão do Kernel
+ • Quantidade de CPUs/Cores
+ • Modelo da CPU
+ • Total de Memória RAM Disponível
+ • Partições
+
+ Abaixo um exemplo de saída, mas faça como achar melhor, desde que cumpra os requisitos acima.
+===============================================
+Relatório da Máquina: linux-debian
+Data/Hora: sáb ago 19 14:38:44 -03 2017
+===============================================
+Máquina Ativa desde: 2017-08-19 14:03:28
+Versão do Kernel: 4.9.0-3-amd64
+CPUs:
+Quantidade de CPUs/Core: 4
+Modelo da CPU: Intel(R) Core(TM) i3 CPU M 370 @ 2.40GHz
+Memória Total: 7857 MB
+Partições:
+Sist. Arq. Tam. Usado Disp. Uso% Montado em
+/dev/sda1 23G 5,0G 17G 23% /
+/dev/sda8 255G 14G 229G 6% /home
+/dev/sda5 9,2G 650M 8,0G 8% /var
+/dev/sda7 1,9G 6,3M 1,7G 1% /tmp
  
  
+ Resolução:
  
+ #!/bin/bash
+
+#########################################################################
+# Exercício 2 - Criando e Executando Scripts                            #
+#									#	
+# Nome: RelatorioMaquina.sh						#
+#									#
+# Autor: Ricardo Prudenciato (ricardo@linuxsemfronteiras.com.br)	#
+# Data: DD/MM/AAAA							#
+#									#
+# Descrição: O script gera um relatório com as principais		#
+#	     informações do servidor					#
+#									#
+# Uso: ./RelatorioMaquina.sh						#
+#									#
+#########################################################################
+
+# Obs: Primeiro obtive o resultado, e depois guardei em variaveis. 
+
+ Como Obter a versão do Kernel? 
+							KERNEL=$(uname -r)
+							
+ Como obter o HostName?
+						HOSTNAME=$(hostname)
+							
+ Como obter o qtde de CPUs?
+							CPUNO=$(cat /proc/cpuinfo |grep "model name"|wc -l)
+							
+ 							
+ Como obter o modelo da CPU?
+						CPUMODEL=$(cat /proc/cpuinfo |grep "model name"|head -n1|cut -c14-)
+						
+ Como obter a memória total em MB?
+						MEMTOTAL=$(expr $(cat /proc/meminfo |grep MemTotal|tr -d ' '|cut -d: -f2|tr -d kB) / 1024) # Em MB
+
+ Como obter as partições?
+						FILESYS=$(df -h|egrep -v '(tmpfs|udev)')
+						
+ Como obter desde de quando a máquina está ativa?
+												UPTIME=$(uptime -s)
+			
+
+KERNEL=$(uname -r)
+HOSTNAME=$(hostname)
+CPUNO=$(cat /proc/cpuinfo |grep "model name"|wc -l)
+CPUMODEL=$(cat /proc/cpuinfo |grep "model name"|head -n1|cut -c14-)
+MEMTOTAL=$(expr $(cat /proc/meminfo |grep MemTotal|tr -d ' '|cut -d: -f2|tr -d kB) / 1024) # Em MB
+FILESYS=$(df -h|egrep -v '(tmpfs|udev)')
+UPTIME=$(uptime -s)
+
+clear
+echo "=================================================================="
+echo "Relatório da Máquina: $HOSTNAME"
+echo "Data/Hora: $(date)"
+echo "=================================================================="
+echo 
+echo "Máquina Ativa desde: $UPTIME"
+echo
+echo "Versão do Kernel: $KERNEL"
+echo
+echo "CPUs:"
+echo "Quantidade de CPUs/Core: $CPUNO"
+echo "Modelo da CPU: $CPUMODEL"
+echo
+echo "Memória Total: $MEMTOTAL MB"
+echo
+echo "Partições:"
+echo "$FILESYS"
+echo
+echo "=================================================================="
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+27.Criando Scripts - Resolução do Exercício 3
+
+Neste Exercício vou receber o nome de um usuário como parâmetro e exibir algumas informações.
+
+#!/bin/bash
+
+#########################################################################
+# Exercício 3 - Criando e Executando Scripts                            #
+#									#
+# Nome: RelatorioUsuario.sh						#
+#									#
+# Autor: Ricardo Prudenciato (ricardo@linuxsemfronteiras.com.br)	#
+# Data: DD/MM/AAAA							#
+#									#
+# Descrição: O script gera um relatório com informações de um		#
+#	     usuário do sistema passado como parâmetro			#
+#									#
+# Uso: ./RelatorioUsuario.sh <usuario>					#
+#									#
+#########################################################################
+
+#ls /home/$1 > /dev/null 2>&1 || echo "Usuario Inexistente"
+#ls /home/$1 > /dev/null 2>&1 || exit 1
+
+ls /home/$1 > /dev/null 2>&1 || { echo "Usuario Inexistente" ; exit 1; }
+
+USERID=$(grep $1 /etc/passwd|cut -d":" -f3)
+DESC=$(grep $1 /etc/passwd|cut -d":" -f5 | tr -d ,)
+USOHOME=$(du -sh /home/$1|cut -f1)
+
+clear
+echo "=========================================================================="
+echo "Relatório do Usuário: $1"
+echo 
+echo "UID: $USERID"
+echo "Nome ou Descrição: $DESC"
+echo 
+echo "Total Usado no /home/$1: $USOHOME"
+echo
+echo "Ultimo Login:"
+lastlog -u $1
+echo "=========================================================================="
+exit 0
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+Seção 4: Instruções Condicionais
  
- 
- 
+28.Uso da instrução if - Conceitos e Sintaxe
+
  
  
  
