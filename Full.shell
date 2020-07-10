@@ -1650,6 +1650,77 @@ Seção 4: Instruções Condicionais
  
 28.Uso da instrução if - Conceitos e Sintaxe
 
+ Instruções Condicionais - IF
+ 
+ 
+ if <comando-condicao> 
+ then
+ comando1
+ comando2
+ comando3
+ fi      <-- fi para fechar o if
+ 
+ 
+ Outro exemplo else:
+ -------------------
+ 
+ if <comando-condicao> 
+ then
+	comando1
+ else
+	comando2
+ fi  
+ 
+ Outro exemplo usando elif:
+ --------------------------
+  
+ if <comando-condicao> 
+ then
+	comando1
+ elif <comando-condicao>
+ then
+	comando2
+ else
+	comando3
+ fi  
+ 
+ 
+ Comando test: utilizado para criar uma condicao:
+ 
+ test <expressao>
+ 
+ man test --> Comando que mostra uma serie de exemplos com este comando
+ 
+ Algus exemplo com o comando test:
+ 
+ test 50 -gt 100
+ test "$VAR1" -eq 12
+ test -f /tmp/teste
+ test "$VAR1" = "$VAR2"
+ 
+ Outra forma de usar o comando test e substituir test por []:
+ Exemplo:
+  
+ [50 -gt 100]
+ ["$VAR1" -eq 12]
+ [-f /tmp/teste]
+ ["$VAR1" = "$VAR2"]
+ 
+ -a --> # AND 
+ -o --> # OR
+ 
+ Pode usar os dois na mesma condição, porém, o -a tem preferencia em relação ao -o, caso queira
+priorizar o -o, tem que usar parenteses().
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+29.Uso da instrucao if - Demonstracao pratica
+
+
+ 
+ 
+
+ 
  
  
  
