@@ -2011,14 +2011,215 @@ echo "A hora atual é: $HORA:$MIN $AMPM"
 ---------------------------------------------------------------------------------------------------	 								 
 33.Instrucao Condicionais Resolucao do Exercicio 2
 
+ 2.Crie um script que gere um arquivo compactado de backup de todo o diretório home do usuário 
+   atual (/home/<usuario>).
+ Considere que:
+• O arquivo de backup será criado no diretório /home/<usuario>/Backup
+• O nome do arquivo de backup deve seguir o padrão
+backup_home_AAAAMMDDHHMM.tgz, exemplo
+backup_home_201708241533.tgz
+• Caso o diretório /home/<usuario>/Backup não exista, o script deve criá-lo
+• Antes de criar o backup, o script deve consultar se existe algum arquivo
+de backup criado na última semana. Se exisitir, o usuário deve ser
+consultado se deseja continuar. Se o usuário optar por não continuar, o
+script deve abortar com código de saída 1.
+• Após gerar o backup, o script deve informar o nome do arquivo gerado.
+Exemplo de Execução:
+$ ./GeraBackupHome.sh
+Já foi gerado um backup do diretório /home/ricardo nos últimos 7 dias.
+Deseja continuar? (N/s): s
+Será criado mais um backup para a mesma semana
+LinuxSemFronteiras.com.br
+Curso Programação Shell Script – Automatizando Rotinas no Linux
+http://www.udemy.com/programacao-shell-script
+Autor: Ricardo Prudenciato
+Criando Backup...
+O backup de nome "backup_home_201708241547.tgz" foi criado em
+/home/ricardo/Backup
+Backup Concluído!
+ 
+ Resolucao:
+ ----------
+ 
+ #!/bin/bash
+
+#########################################################################
+# Exercício 2 - Instruções Condicionais                                 #
+#									#	
+# Nome: GeraBackupHome.sh						#
+#									#
+# Autor: Ricardo Prudenciato (ricardo@linuxsemfronteiras.com.br)	#
+# Data: DD/MM/AAAA							#
+#									#
+# Descrição: O script fará um backup compactado do diretório home	#
+#	     do usuário que estiver executando o script.		#
+# Uso: ./GeraBackupHome.sh						#
+#									#
+#########################################################################
+
+DIRDEST=$HOME/Backup  --> $HOME --> E uma variavel de ambiente
+
+if [ ! -d $DIRDEST ]  --> -d checa se é um diretorio. Se nao exixteir o diretorio, entra no loop
+then
+	echo "Criando Diretório $DIRDEST..."
+	mkdir -p $DIRDEST
+fi
+
+DAYS7=$(find $DIRDEST -ctime -7 -name backup_home\*tgz)       # Atenção na proteção do *
+
+if [ "$DAYS7" ]   # Testa se a variável é nula. Atenção nas aspas duplas
+then
+	echo "Já foi gerado um backup do diretório $HOME nos últimos 7 dias."
+	echo -n "Deseja continuar? (N/s): "
+	read -n1 CONT  --> Para capitura so uma tecla
+	echo
+	if [ "$CONT" = N -o "$CONT" = n -o "$CONT" = "" ]
+	then
+		echo "Backup Abortado!"
+		exit 1
+	elif [ $CONT = S -o $CONT = s ]
+ 	then
+		echo "Será criado mais um backup para a mesma semana"
+	else
+		echo "Opção Inválida"
+		exit 2
+	fi
+fi
+
+echo "Criando Backup..."
+ARQ="backup_home_$(date +%Y%m%d%H%M).tgz"
+tar zcvpf $DIRDEST/$ARQ --exclude="$DIRDEST" "$HOME"/* > /dev/null
+
+echo
+echo "O backup de nome \""$ARQ"\" foi criado em $DIRDEST"
+echo
+echo "Backup Concluído!"
 
  
+ Para apagar dos os arquivos dentro do diretorio informado
  
+ rm -f /home/adr/Backup/*
  
- 
- 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+34.Instrucoes Condicionais Resolucao do Exercicio 3
 
+ 3.Crie um script que receba do usuário 2 valores e em seguida exiba um menu para ele escolher 
+ uma das 4 principais operações aritmétricas (soma, subtração, multiplicação e divisão). 
+ Após isso a operação e o resultado são exibidos ao usuário.
+
+ Considere que:
+ • O script deve validar e abortar a execução caso algum dos valores não seja informado
+ • No caso de multiplicação, o script deve exibir uma mensagem de erro caso um dos valores 
+   seja 0, e então abortar
+ • No caso de divisão, o script deve exibir uma mensagem de erro caso um dos valores seja 0, 
+   e então abortar
+ • Também no caso de divisão, o script deve exibir se é uma divisão exata ou com resto.
+
+Exemplo de Execução:
+$ ./OperacoesValores.sh
+Informe o Valor 1: 50
+Informe o Valor 2: 20
+Escolha uma Operação:
+1 = Soma
+2 = Subtração
+3 = Multiplicação
+4 = Divisão
+Q = Sair
+Opção: 4
+Divisão com Resto = 10
+50 / 20 = 2
+Dicas:
+• O comando expr possui a opção % para obter o resto de uma divisão
  
+ Resolucao do exercicio:
+ -----------------------
+ 
+ #!/bin/bash
+
+#########################################################################
+# Exercício 3 - Instruções Condicionais                                 #
+#									#
+# Nome: OperacoesValores.sh						#
+#									#
+# Autor: Ricardo Prudenciato (ricardo@linuxsemfronteiras.com.br)	#
+# Data: DD/MM/AAAA							#
+#									#
+# Descrição: O script recebe dois valores inseridos pelo usuário	#				
+#	     e exibe um menu para que uma das operações básicas 	#
+#	     seja realizada						#
+#									#
+# Uso: ./OperacoesValores.sh						#
+#									#
+#########################################################################
+
+read -p "Informe o Valor 1: " VALOR1
+read -p "Informe o Valor 2: " VALOR2
+
+if [ ! $VALOR1 ] || [ ! $VALOR2 ]       # Também poderia ser usado o -z
+then
+	echo "Nenhum dos valores pode ser nulo"
+	exit 1
+fi
+
+echo
+echo "Escolha uma Operação:"
+echo "1 = Soma"
+echo "2 = Subtração"
+echo "3 = Multiplicação"
+echo "4 = Divisão"
+echo "Q = Sair"
+echo
+read -p "Opção: " OPCAO 
+echo
+
+case $OPCAO in 
+	1)
+		OPER="+"
+		;;
+        2)	
+		OPER="-"
+		;;
+        3)
+		if [ $VALOR1 -eq 0 -o $VALOR2 -eq 0 ] --> Valor 1 ou 2 igual a 0
+		then
+			echo "Um valor 0 não pode ser utilizado em um multiplicação"
+			exit 1
+		fi
+		OPER="*"
+		;;
+        4)
+		if [ $VALOR1 -eq 0 -o $VALOR2 -eq 0 ] --> Valor 1 ou 2 igual a 0
+		then
+			echo "Um valor 0 não pode ser utilizado em uma divisão"
+			exit 1
+		fi
+		
+		if [ $(expr $VALOR1 % $VALOR2) -ne 0 ] --> % para o resto da divisao
+		then
+			echo "Divisão com Resto = $(expr $VALOR1 % $VALOR2)"
+		else
+			echo "Divisão Exata"
+		fi
+		echo
+		OPER="/"
+		;;
+	[Qq])
+		echo "Saindo..."
+		exit
+		;;
+	*)
+		echo "Opção Inválida!"
+		exit 1
+		;;
+esac		
+echo "$VALOR1 $OPER $VALOR2 = $(expr $VALOR1 "$OPER" $VALOR2)"
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+Secao 5: Instrucoes de Loop 
+
+
  
  
  
