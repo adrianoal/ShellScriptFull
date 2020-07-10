@@ -1755,7 +1755,91 @@ fi
 
 ---------------------------------------------------------------------------------------------------	
 ---------------------------------------------------------------------------------------------------	 								 
-30.Uso da Instrucao if - Demonstracao Pratica 
+30.Uso da Instrucao Case - Conceitos, Sintaxe e Pratica
+
+
+ #!/bin/bash
+
+case "$1" in --> $1 Isso é um parametro
+	[0-9])
+		echo "O parâmetro é um número"
+		;;
+	[A-Z])
+		echo "O parâmetro é uma letra maiúscula"
+		;;
+	[a-z])
+		echo "O parâmetro é uma letra minúscula"
+		;;
+	*)			--> Para outros
+		echo "O parâmetro é um caracter especial"
+esac
+
+ 
+ Um exemplo para criar menu com o uso do Case:
+ ---------------------------------------------
+ 
+ #!/bin/bash
+
+# Exibição do Menu
+clear
+echo "Escolha uma Opção do Menu:"
+echo
+echo "1 - Adicionar"
+echo "2 - Remover"
+echo "3 - Alterar"
+echo "q - sair"
+echo
+read -p "Opção: " opcao
+echo
+
+# Rotinas das Opções
+case "$opcao" in
+   1) 
+	echo "Opcao 1 escolhida."
+	echo "Iniciar operação de inclusão..."
+	sleep 3
+	;;
+   2) 
+	echo "Opcao 2 escolhida."
+	echo "Iniciar operação de remoção..."
+	sleep 3
+	;;
+   3) 
+	echo "Opcao 3 escolhida."
+	echo "Iniciar operação de alteração..."
+	sleep 3
+	;;
+   q) 
+	echo "Saindo..."
+	sleep 3
+	exit 0
+	;;
+   *) 
+	echo "Opção Inválida"
+	exit 2
+	;;
+esac
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+31.Instrucoes Condicionais - Lista de Exercicios
+
+Você vai encontrar nessa aula um arquivo PDF para Download. 
+
+Esse arquivo contém uma lista de exercícios referentes ao que foi estudo nesta seção.
+
+É muito importante que você pratique o que foi estudado até agora através desses exercícios. 
+
+Nas próximas aulas eu mostro como resolver cada um deles mas tente ao máximo resolvê-los 
+sozinho, pelo menos até o ponto que conseguir.
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+32.Instrucoes Condicionais Resolucao do Exercicio 1
+
+
+
+
+
 
 
  
