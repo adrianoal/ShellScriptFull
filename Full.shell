@@ -1716,7 +1716,51 @@ priorizar o -o, tem que usar parenteses().
 ---------------------------------------------------------------------------------------------------	 								 
 29.Uso da instrucao if - Demonstracao pratica
 
+ grep adr etc/passwd --> Pesquisa se tem adr no etc/passwd 
+ echo $? 			 --> Código de retorno do comando acima
+ 
+ O arquivo /etc/passwd: É um banco de dados de informações baseadas em texto sobre os usuários 
+ que podem logar no sistema ou outras identidades de usuários do sistema operacional que 
+ possuem processos em execução.
+ 
+ test 10 -gt 5 --> 10 e maior q 5
+ echo $? 	   --> Sim! Retornara 0
+ 
+ VAR1=10
+ test $VAR1 -eq 10  --> A variavel VAR1 é igual a 10
+ echo $? 			--> Sim, resultado verdadeiro 0
+ 
+ VAR2=20
+ test $VAR2 -lt 30  --> A variavel  VAR2 é menor que 30? (-lt Sig. Lower)
+ echo $? 			--> sim, Retornara 0
+ 
+ 
+ test -f /etc/shadow  --> -f Verifica se o arquivo seguinte existe ou nao
+ echo $?			  --> 0(sim) 1(nao)
+ 
+ man test --> Para verificar as possibilidades deste comando
+ 
+ Um Script de exemplo:
+ ---------------------
+ 
+ #!/bin/bash
+USUARIO=$(grep "$1" /etc/passwd)
 
+if [ -n "$USUARIO" ]  --> -n Sig. que a variavel nao e nula
+then
+	echo "O usuário existe"
+else
+	echo "O usuário não existe"
+fi
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+30.Uso da Instrucao if - Demonstracao Pratica 
+
+
+ 
+ 
+ 
  
  
 
