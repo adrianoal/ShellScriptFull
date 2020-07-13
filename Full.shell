@@ -2446,13 +2446,147 @@ Pesquisar como definir o IFS (Separador Internio de Campo)
 ---------------------------------------------------------------------------------------------------	 								 
 38.Uso da Instrucao While - Conceitos e Praticas
  
+ Exemplo:
+ --------
+ 
+ X=1
+ while [$X -le 20] # P/ <= 20
+ do
+	echo O valor atual é $X-1
+	X=$(expr $X + 1) # expr --> P/ Incremento
+ done
+ 
+ Outro Exemplo:
+ --------------
+ 
+ while [$(ps axu|wc -l) -lt300] # Conta os processos em execucao, enquanto for < 300 sai do script
+ do
+	echo "Tudo ok"
+ sleep 30
+ done 
+ 
+ Outro Exemplo:
+ --------------
+ 
+ while ls /var/lock/processo.lock > /dev/null # Enquanto esse processo existir vai fica no loop
+ do
+	echo "Processo em Execução"
+ done 
+ 
+ 
+ > /dev/null # Para não jogar a saída na tela
+ 
+ Testando os comandos acima na prática:
+ --------------------------------------
+ 
+ i=1
+ while [ $i -lt 30 ]
+ do
+ echo valor $i3i=$(expr $i + 1)
+ done
+ 
+ 
+ Exemplo no Shell Script:
+ ------------------------
+ ps axu |wc -l  # --> Verificando quantos processos estão em execução
+ 
+ Nesse exemplo, eu quero que o usuário digite um valor, ou seja o valor máximo q eu quero 
+ em execução, e o Script vai ficar monitorando se esse número de processos máximo foi atingido,  
+ ou não.
+
+ 
+ # ./ExemploWhile.sh
+ #!/bin/bash
+
+clear
+read -p "Informe o Limite de Processos: " MAXIMO
+
+while [ $(ps axu|wc -l) -le $MAXIMO ] # menor ou igual ao valor maximo
+do
+	echo "Tudo OK"
+	echo "Processos Atuais: $(ps axu|wc -l)"
+	sleep 3
+	echo
+done
+
+echo "Limite de Processos Excedido"
+echo "Por favor verifique o sistema"
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+39.Uso da Instrução Until - Conceitos e Pratica
+
+ Until # --> Parecido com While, porém, neste caso faz alguma coisa até que seja verdadeira
+ 
+ 
+ Exemplo:
+ --------
+ 
+ x=1
+ until [$x -eq 20] # Ou seja, enquato for menor que 20 fica executando, quando chegar sai do loop
+ do
+	echo O valor atual é: $xr
+	x=$(expr $x + 1)
+ done
+ 
+ 
+  Exemplo:
+ --------
+ 
+ until [$(ps axu |wc -l) -ge 300] # --> Enquanto for maior ou igual a 300, vai jogar um tudo ok na tela
+ do
+	echo "Tudo OK"
+ sleep 30
+ done 
  
  
  
+   Exemplo:
+ --------
+ 
+ until ls /var/lock/processo.lock > /dev/null # Ate que isso seja verdade, vai ficar executando
+ do
+	echo "Aguardando Processo..."
+	sleep
+ done 
  
  
+ Teste na Pratica:
+ -----------------
+ 
+ x-1
+ until [ $x -eq 15 ] # Menor que 15
+ do
+ echo Valor $x
+ x=$(expr $x + 1)
+ done
+ 
+ Outro Exemplo:
+ --------------
+ 
+ # ./ExemploUntil.sh
+ #!/bin/bash
+
+until ps axu |grep firefox |grep -v grep > /dev/null # Vai ficar pedindo para iniciar o navegador Firefox, quando isso acontecer vai mostra o PID desse processo
+do
+	echo Inicie o Firefox...
+	sleep 3
+	echo
+done
+
+echo Firefox Iniciado.
+echo PID: $(pgrep firefox) # pgrep --> P/ retornar so o PID do processos
+
+
+ Conferindo:
+ ps axu |grep firefox
  
  
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+40.Uso dos comandos continue e break
+
+
  
 	
 	
