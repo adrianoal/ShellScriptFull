@@ -2224,7 +2224,7 @@ Secao 5: Instrucoes de Loop
 
  Exemplo:
  
- for numero 12345
+ for numero in 12345
  do
 	echo " O número atual é $numero"
  done
@@ -2296,17 +2296,130 @@ Outra forma:
 ---------------------------------------------------------------------------------------------------	 								 
 36.Uso da Instrucao For - Demonstracao Pratica
 
+ for variavel in 1 2 3 4 5
+ do
+	echo "O valor atual é $variavel"
+ done
+ 
+ ou
+ 
+ for variavel in 1 2 3 4 5; do echo " O valor da variavel é $variavel"; done
+ 
+ 
+ Outro exemplo:
+ --------------
+ 
+ for i in a b c d 
+ do 
+ echo "O valor atual é $i"
+ sleep 1 --> Suspender o processo de chamada por um tempo especificado, neste caso 1 segundo
+ done
+ 
+ Quais comando posso utilizar para fazer uma sequencia de valores?
+ 
+ Teste: 
+ seq 5 20
+ 
+ for valor in $(seq 5 10)
+ do
+ echo "O valor é: $valor"
+ done
+ 
+ Outro exemplo com intervalos:
+ 
+ for valor in $(seq 1 5 50)
+ do 
+ echo "O valor é: $valor"
+ echo "-----------------"
+ done
+ 
+ 
+ Outra sintaxe do comando seq:
+ 
+ for i in {10..20}
+ do
+ echo "Valor $i"
+ echo "--------"
+ done
+ 
+ 
+  Outra sintaxe do comando seq com intervalo:
+ 
+ for i in {10..20..2}
+ do
+ echo "Valor $i"
+ echo "--------"
+ done
+ 
+ for arquivos in alunos*
+ do
+ echo "O arquivo atual é: $arquivos"
+ done
+ 
+ 
+  Fazendo uma cópia dos arquivos atuais:
   
+  for arquivos in alunos*
+  do
+  echo "Copiando arquivos..."
+  cp $arquivos $arquivos-copia
+  echo "===================="
+  done
   
+ conferindo: 
+ ls -l alunos*
  
  
+ Removendo o arquivo criado --> arquivos-copia						
+ rm - f *copia
  
- 						
 
-
-
-
+ Exibindo uma sequencia atraves de parametros de entradas:
  
+ # ./ExemploFor.sh 
+ #!/bin/bash
+
+clear
+read -p "Informe o início da sequência: " INICIO
+read -p "Informe o final da sequência: " FINAL
+
+for i in $(seq "$INICIO" "$FINAL")
+do
+	echo "Exibindo o valor $i"
+	sleep 1
+done
+
+ Outro exemplo com For:
+ ----------------------
+ 
+ # ./ExemploForArquivos.sh
+ #!/bin/bash
+
+for i in /home/adr/Cursos/ShellScript/arquivos/*
+do
+	if [ -f $i ] # -f --> se o $i for um arquivo, executa esse comando. (-f Verifica se o arquivo seguinte existe ou nao) --> Se for diretorio, nao vai executar
+	then
+		echo "Verificando o arquivo $i"
+		LINHAS=$(cat $i | wc -l) # wc -l --> Verificar todos os arquivos nesse diretorio, e depois vai guardar apenas o qtde nessa variavel.
+		echo "O arquivo $i contém $LINHAS linhas."
+		echo
+	fi
+done
+
+ wc -l # Guarda a qtde em numeros
+ 
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+37.For + IFS(Internal Field Separator)
+
+ for VAR in $(cat alunos2.txt)
+ do
+ echo "Exibindo valor: $VAR"
+ echo "===================="
+ done 
+ 
+
  
  
  
