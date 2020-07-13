@@ -2413,13 +2413,39 @@ done
 ---------------------------------------------------------------------------------------------------	 								 
 37.For + IFS(Internal Field Separator)
 
+ # (Internal Field Separator) Separador Internio de Campo
+
  for VAR in $(cat alunos2.txt)
  do
  echo "Exibindo valor: $VAR"
  echo "===================="
  done 
  
+ OBS: 
+ 
+ set|grep IFS
+ 
+ IFS=$' \t\n' --> Esse é o separador de campo padrão aqui no Shell 
+ 
+ 
+Pesquisar como definir o IFS (Separador Internio de Campo)
 
+ Pode ser alterado para executar uma aplicação, e depois precisa voltar para a configuração 
+ padrão.
+ 
+ 1º Criar um backup
+ 
+ OLDIFS=$IFS --> Fazendo Backup 
+ 
+ set |grep IFS 
+ 
+ IFS=#OLDIFS --> Desfazendo o Backup 
+ 
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+38.Uso da Instrucao While - Conceitos e Praticas
+ 
  
  
  
