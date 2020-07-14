@@ -2791,11 +2791,105 @@ done
 ---------------------------------------------------------------------------------------------------	 								 
 44.Instrucoes de Loop - Resolucao do Exercicio 3
 
+3.Fazer um script que inspecione os diretórios /home/ de todos os usuários em busca de arquivos
+com as extensões .mp3, .mp4 e .jpg.
+ O script deve gerar como saída final um relatório com a quantidade de cada tipo de arquivo 
+para cada usuário.
+
+Exemplo de Execução:
+
+$ ./InspecionaHome.sh
+Usuario: aluno1
+Arquivos JPG: 8
+Arquivos MP3: 0
+Arquivos MP4: 12
+Usuario: aluno2
+Arquivos JPG: 0
+Arquivos MP3: 0
+Arquivos MP4: 0
+Usuario: ricardo
+Arquivos JPG: 685
+Arquivos MP3: 0
+Arquivos MP4: 81
+Dicas:
+
+• Você pode utilizar a seguinte sintaxe para o comando find: 
+  find/home/usuario -name '*.jpg' -o -name '*.mp4' -o -name '*.mp3'
+ 
+ Resolucao 3:
+ ------------
+ Comando basename:
+ -----------------
+
+ basename /home/aluno1 # Exemplo
+ 
+# ./InspecionaHome.sh 
+ 
+#!/bin/bash
+
+#########################################################################
+# Exercício 3 - Instruções de Loop                                      #
+#									#	
+# Nome: InspecionaHome.sh						#
+#									#
+# Autor: Ricardo Prudenciato (ricardo@linuxsemfronteiras.com.br)	#
+# Data: DD/MM/AAAA							#
+#									#
+# Descrição: Inspeciona os diretórios home dos usuários em busca 	#
+# de arquivos de determinadas extensões				 	#
+#									#
+# Uso: ./InspecionaHome.sh 						#
+#									#
+#########################################################################
+
+#Serão procurados arquivos do tipo .mp4, .mp3 e .jpg
+
+for user in /home/*
+do
+	# Zerando as variaveis:
+	MP4COUNT=0
+	MP3COUNT=0
+	JPGCOUNT=0
+	OLDIFS=$IFS
+	IFS=$'\n' # Neste caso, foi necessario mudar o IFS
+	for files in $(find $user -name '*.jpg' -o -name '*.mp4' -o -name '*.mp3')
+	do
+		case $files in
+			*.mp4)
+				MP4COUNT=$(expr $MP4COUNT + 1 )
+				;;
+			*.mp3)
+
+				MP3COUNT=$(expr $MP3COUNT + 1 )
+				;;
+			*.jpg)
+
+				JPGCOUNT=$(expr $JPGCOUNT + 1 )
+				;;
+		esac
+	done # Fim do for do find
+
+echo "Usuario: $(basename $user)"
+echo "Arquivos JPG: $JPGCOUNT"
+echo "Arquivos MP3: $MP3COUNT"
+echo "Arquivos MP4: $MP4COUNT"
+echo
+done # Fim do For no /home
+
+IFS=$OLDIFS
 
  
+  Se eu quisesse gerar um arquivo com extensao txt para enviar ao gerente?
+  
+  ./InspecionaHome.sh # Execucao do Script normal 
+  ./InspecionaHome.sh > RelatorioUsuarios.txt # gerando o txt
+  
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+45.Instrucoes de Loop - Resolucao do Exercicio 4 
+
  
- 
- 
+  
   
 
   
