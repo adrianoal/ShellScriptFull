@@ -2644,12 +2644,83 @@ sozinho, pelo menos até o ponto que conseguir.
 
 ---------------------------------------------------------------------------------------------------	
 ---------------------------------------------------------------------------------------------------	 								 
+42.Instrucoes de Loop - Resolucao do Exercicio 1
 
+ 1. Crie um script que mostre todos os usuários “humanos” da máquina seguidos de seu UID, 
+Diretório Home e Nome/Descrição.
+
+Exemplo de Saída:
+
+USUARIO UID DIR HOME NOME OU DESCRIÇÃO
+ricardo 1000 /home/ricardo Ricardo Prudenciato
+aluno1 1001 /home/aluno1 Aluno de Teste 1
+aluno2 1002 /home/aluno2 Aluno de Teste 2
+andre 1003 /home/andre Andre Novais
+Dicas:
+
+• Baseie-se pelas informações do arquivo /etc/passwd
+• O arquivo /etc/login.defs mostra através dos parâmetros UID_MIN e UID_MAX os UID atribuídos 
+aos usuários “normais” do sistema
+
+• Para definir apenas a quebra de linha como separador no IFS use: IFS=$'\n'
+• Use o a opção -e do echo para controlar o espaçamento da saída com tabs (\t)
  
  
+ Resolucao 01:
+ -------------
  
+ 1º Verificar o arquivo que contem as informações dos usuários:
  
-	
+ less /etc/passwd
+ vi /etc/login.defs # Definicoes dos usuarios
+ 
+# ./ListaUsuarios.sh
+#!/bin/bash
+
+#########################################################################
+# Exercício 1 - Instruções de Loop					#
+#									#	
+# Nome: ListaUsuarios.sh						#
+#									#
+# Autor: Ricardo Prudenciato (ricardo@linuxsemfronteiras.com.br)	#
+# Data: DD/MM/AAAA							#
+#									#
+# Descrição: Listar todos os usuários (humanos) do sistema		#
+#	     exibindo as principais informacoes da conta		#
+#									#
+# Uso: ./ListaUsuarios.sh						#
+#									#
+#########################################################################
+
+# # tr -s "\t"  --> Transforma varios tabs em um só... Exemplo:
+# grep "^UID_MIN" /etc/login.defs|tr -s "\t"
+# grep "^UID_MIN" /etc/login.defs 
+#UIDs utilizados para usuários comuns
+MIN_UID=$(grep "^UID_MIN" /etc/login.defs|tr -s "\t"|cut -f2) # Verificar UID Max do sistema
+MAX_UID=$(grep "^UID_MAX" /etc/login.defs|tr -s "\t"|cut -f2) # Verificar UID Min do sistema
+
+OLDIFS=$IFS # Fazendo um Backup do IFS antigo
+IFS=$'\n' # Alterei IFS para essa configuracao, no final do Script eu volto.
+
+#Criando o cabeçalho da saída
+echo -e "USUARIO\t\tUID\t\tDIR HOME\t\tNOME OU DESCRIÇÃO" # Usuario 2 tab, UID 2 tab, Nome 2 tab...
+
+for i in $(cat /etc/passwd)
+do
+	USERID=$(echo $i | cut -d":" -f3)
+	if [ $USERID -ge $MIN_UID -a $USERID -le $MAX_UID ]
+	then
+		USER=$(echo $i | cut -d":" -f1)
+		USERDESC=$(echo $i | cut -d":" -f5 | tr -d ',')
+		USERHOME=$(echo $i | cut -d":" -f6)
+		echo -e "$USER\t\t$USERID\t\t$USERHOME\t\t$USERDESC"
+	fi
+done
+IFS=$OLDIFS
+
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+
 	
   			
  			
