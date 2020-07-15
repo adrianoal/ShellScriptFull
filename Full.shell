@@ -3016,18 +3016,68 @@ Secao 6: Funcoes
  
 ---------------------------------------------------------------------------------------------------	
 ---------------------------------------------------------------------------------------------------	 								 
-47.
+47.Uso de Funcoes no Shell Script - Conceitos e Sintaxe
+
+# ./ExemploFunction.sh
+
+#!/bin/bash
+
+maiuscula () {
+	VAR1=$(echo $1 | tr a-z A-Z) # Variavel Global
+}
+
+maiuscula adriano lima
+echo $VAR1
+
 	
-	
+ Outro Exemplo variavel local:
+ -----------------------------
 
 
+maiuscula () {
+	local VAR1=$(echo $1 | tr a-z A-Z) # Variavel Local
+}
+
+maiuscula adriano lima
+echo $VAR1
+
+ # Ao fazer a chamada na forma abaixo, nao será reconhecido, pq não pertence ao código externo.
+
+maiuscula adriano lima
+echo $VAR1
+
+------------------------------------------------------
+------------------------------------------------------
+
+#!/bin/bash
+
+ler () {
+	read -p "Informe o Nome: " NOME
+	read -p "Informe o Sobrenome: " SOBRENOME
+	return 10
+}
+
+ler
+RETURN_CODE=$?
+echo
+echo $NOME $SOBRENOME
+echo 
+echo $RETURN_CODE " - Retornou com sucesso!"
 
  
- 
- 
- 
-								
- 								
+------------------------------------------------------
+------------------------------------------------------							
+ 								#!/bin/bash
+
+adiciona () {
+	soma=$(expr $1 + $2)
+	echo $soma
+}
+
+adiciona 10 20 # Adicionado os parametro Default
+
+#echo $1 $2     # Exibindo o resultado das variáveis
+
  
  
  
