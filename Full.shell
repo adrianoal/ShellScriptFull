@@ -2971,7 +2971,54 @@ Secao 6: Funcoes
 
 46.Uso de Funcoes no Shell Script - Conceitos e Sintaxe 
 
-
+ FUNCTIONS: Trecho de código que exerce uma rotina específica dentro do script.
+		
+ * Evita a repetção excessiva de código 
+	Ou seja, se um código é repitido várias vezes, é só criar uma fanção e fazer a chamada no 
+	código.
+	
+ * Redur o tamanho final do Script
+ 
+ * Facilita a manutenção do código
+ 
+ 
+ CARACTERÍSTICAS DAS FUNCTIONS:
+ ------------------------------
+ 
+ * Podem utilizar parâmetros
+ * Podem utilizar variáveis globais ou locais
+ * Devem ser definidas antes de serem chamadas
+ * Podem ser utilizados códigos de retorno
+ 
+ Obs: O Shell Script é uma linguagem interpretadam não compilada.
+ 
+ 
+ VARIÁVEIS:
+ ----------
+ 
+ * Váriavel Global --> Visível por todo o código(Padrão)
+ * Váriavel Local  --> Visível apenas na função
+ 
+ Exemplo da declaração de uma variável local:
+ 
+ local VAR1="Shell Script" # Ou seja, so sera vista em um determinado trecho do codigo
+ 
+ RETURN CODE:
+ ------------
+ 
+ * Mesmo princípio do Exit Code
+ * Definida pela intrução "return"
+ * Acessada por $?
+ 
+ return 10
+ echo $?
+ 
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+47.
+	
+	
 
 
 
