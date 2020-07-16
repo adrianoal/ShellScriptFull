@@ -3336,6 +3336,54 @@ esac
 ---------------------------------------------------------------------------------------------------	 								 
 Secao 7:Criando logs e Enviando Emails
 
+50.Cirando Logs - Modo 1 - Redirecionamento 
+ 
+ 1º A forma mais simple de redirecionar a saída padrão e a saída de erro para um arquivo de log.
+ 
+ ./PrimeiroScript.sh 
+ 
+ Jogar a saída para um arquivo de log:
+ Exemplos:
+ 
+ ./PrimeiroScript.sh >  # Subscreve o arquivo
+ ./PrimeiroScript.sh >> # Vai jogando as saídas, e mantem o histórico.
+	# Em caso de logs, se usa ./PrimeiroScript.sh >> para não apagar o que estava dentro do arquivo
+	
+ ./PrimeiroScript.sh >> log.out # Obs: Dessa forma nao joga a saida na tela
+  cat log.out # Conferindo o redirecionamento acima 
+  
+  
+  ./PrimeiroScript.sh >> log.out 2>&1 # Pegando a saida de erro(2) e a saida padrao(1) e jogando p/ o mesmo arquivo
+  cat log.out 
+	
+ 
+  # Gerando log e exibindo na tela:
+ ./PrimeiroScript.sh | tee -a log.out # Esse comando cria o arquivo log.out, e depois exibe na tela	
+ # Obs: -a é a mesma coisa que fazer >>
+
+ ls -l | tee -a log.out # Mostra na tela
+ tail log.out # Mostra a saída
+ cat log.out  # Exibe o conteúdo do arquvo
+ 
+ Outra opção é usar o redirecionamento de saída dentro do proprio Script:
+ ------------------------------------------------------------------------
+ ------------------------------------------------------------------------
+ 
+ Criando arquivo:
+ 
+ vi ExemploLog.sh
+ ./ExemploLog.sh
+ ls- l *out # Consultando o arquivo de log
+ cat log_interno.out
+ 
+---------------------------------------------------------------------------------------------------	
+---------------------------------------------------------------------------------------------------	 								 
+51.Criando Logs - Modo 3 - Uso do logger e rsyslog
+
+ 
+ 
+ 
+ 
 
  
  
